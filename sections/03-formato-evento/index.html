@@ -5,29 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" id="meta-theme-color" content="#D8D8D8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>RSTCOM — Quanto custa seu próximo evento?</title>
   <link rel="stylesheet" href="../../css/styles.css" />
   <link rel="stylesheet" href="../../css/animations.css" />
 </head>
 <body>
 
-  <!-- Barra superior de navegação rápida (visível no Desktop para testar cada seção facilmente) -->
-  <nav class="preview-toolbar" aria-label="Navegação rápida entre seções">
-    <span class="toolbar-label">SEÇÕES:</span>
-    <button type="button" class="active" data-screen="screen-iniciar">1. Iniciar</button>
-    <button type="button" data-screen="screen-auth">2. Login / Sign up</button>
-    <button type="button" data-screen="screen-menu">3. Menu</button>
-    <button type="button" data-screen="screen-pergunta-1">4. Formato</button>
-    <button type="button" data-screen="screen-localizacao">5. Localização</button>
-    <button type="button" data-screen="screen-qtd-pessoas">6. Pessoas & Dias</button>
-    <button type="button" data-screen="screen-padrao-entrega">7. Padrão</button>
-    <button type="button" data-screen="screen-o-que-entra">8. O que entra</button>
-    <button type="button" data-screen="screen-resultado">9. Estimativa (Final 1)</button>
-    <button type="button" data-screen="screen-pagamento">10. Pagamento & Excel (Final 2)</button>
-  </nav>
-
-  <!-- Container Mobile (375x812 fiel ao Figma) -->
+  <!-- Container Principal Full-Screen (Mobile no Celular / Widescreen no PC) -->
   <main class="phone-shell">
 
     <!-- Toast de feedback -->
@@ -44,68 +29,77 @@
         <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
       </button>
 
-      <h1 class="hero-title">
-        <span class="strong-black">Quanto custa</span>
-        seu próximo<br />evento?
-      </h1>
+      <div class="iniciar-hero-content">
+        <h1 class="hero-title">
+          <span class="strong-black">Quanto custa</span>
+          seu próximo<br />evento?
+        </h1>
 
-      <p class="hero-subtitle">
-        Tenha uma faixa de investimento para levar à diretoria antes do briefing fechado em 7 perguntas.
-      </p>
+        <p class="hero-subtitle">
+          Tenha uma faixa de investimento para levar à diretoria antes do briefing fechado em 7 perguntas.
+        </p>
 
-      <button type="button" id="btn-agora-mesmo" class="btn-agora-mesmo animate-float">
-        <img src="../../assets/images/card_bg_evento.png" alt="" class="orb-avatar" />
-        <span class="btn-text">Agora mesmo</span>
-      </button>
+        <button type="button" id="btn-agora-mesmo" class="btn-agora-mesmo animate-float">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="orb-avatar" />
+          <span class="btn-text">Agora mesmo</span>
+        </button>
+      </div>
     </section>
 
     <!-- ===================================================================
          SEÇÃO 2: MENU (#9190:52)
          =================================================================== -->
     <section id="screen-menu" class="screen" aria-label="Menu de navegação">
-      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="menu-logo-center" data-action="go-back" />
-      <div class="menu-line-top"></div>
+      <div class="menu-container">
+        <img src="../../assets/icons/logo_black.svg" alt="Logo" class="menu-logo-center" data-action="go-back" />
+        <div class="menu-line-top"></div>
 
-      <button type="button" class="menu-item-row" style="top: 110px;" data-menu-target="screen-iniciar">
-        <img src="../../assets/icons/icon_para_voce.svg" alt="" class="menu-icon-left" />
-        <span class="menu-text medium" style="left: 69px;">Para você</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+        <div class="menu-items-group">
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-iniciar">
+            <img src="../../assets/icons/icon_para_voce.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text medium">Para você</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
 
-      <button type="button" class="menu-item-row" style="top: 147px;" data-menu-target="screen-iniciar">
-        <span class="menu-text light" style="left: 28px;">Sobre</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+          <button type="button" class="menu-item-row" data-menu-target="screen-iniciar">
+            <span class="menu-text light">Sobre</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
 
-      <button type="button" class="menu-item-row" style="top: 184px;" data-menu-target="screen-pergunta-1">
-        <span class="menu-text light" style="left: 28px;">Iniciar questionário</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+          <button type="button" class="menu-item-row" data-menu-target="screen-pergunta-1">
+            <span class="menu-text light">Iniciar questionário</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
 
-      <button type="button" class="menu-item-row" style="top: 221px;" data-menu-target="screen-resultado">
-        <span class="menu-text medium" style="left: 28px;">Meus formulários</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+          <button type="button" class="menu-item-row" data-menu-target="screen-resultado">
+            <span class="menu-text medium">Meus formulários</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+        </div>
 
-      <div class="menu-line-mid"></div>
+        <div class="menu-line-mid"></div>
 
-      <button type="button" class="menu-item-row" style="top: 293px;" data-menu-target="screen-auth">
-        <img src="../../assets/icons/icon_minha_conta.svg" alt="" class="menu-icon-left" />
-        <span class="menu-text light" style="left: 69px;">Minha conta</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+        <div class="menu-items-group">
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-auth">
+            <img src="../../assets/icons/icon_minha_conta.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text light">Minha conta</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
 
-      <button type="button" class="menu-item-row" style="top: 330px;" data-menu-target="screen-pagamento">
-        <img src="../../assets/icons/icon_contato.svg" alt="" class="menu-icon-left" />
-        <span class="menu-text light" style="left: 69px;">Contato</span>
-        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
-      </button>
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-pagamento">
+            <img src="../../assets/icons/icon_contato.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text light">Contato</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+        </div>
 
-      <div class="menu-line-bottom"></div>
-
-      <div class="brasil-footer">
-        <img src="../../assets/images/bandeira_brasil.png" alt="Brasil" />
-        <span>Brasil</span>
+        <div class="menu-bottom-area">
+          <div class="menu-line-bottom"></div>
+          <div class="brasil-footer">
+            <img src="../../assets/images/bandeira_brasil.png" alt="Brasil" />
+            <span>Brasil</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -118,61 +112,73 @@
         <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
       </button>
 
-      <h2 class="quiz-big-title">Tudo bem,<br />bem vindo!</h2>
-      <p class="quiz-sub-question">Qual o formato do evento?</p>
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <h2 class="quiz-big-title">Tudo bem,<br />bem vindo!</h2>
+          <p class="quiz-sub-question">Qual o formato do evento?</p>
+        </div>
 
-      <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+        <div class="quiz-options-stage">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
 
-      <!-- 6 Opções em Grid (2 linhas x 3 colunas) exatas do Figma -->
-      <div class="option-glass-card row-1" style="left: 23px; width: 105px;" data-format="Convencao de vendas">
-        <div class="opt-title">Convenção<br />de vendas</div>
-        <div class="opt-desc">Kickoff, alinhamento e reconhecimento do time</div>
-      </div>
+          <!-- 6 Opções em Grid (3 colunas x 2 linhas) -->
+          <div class="quiz-options-grid cols-3">
+            <div class="option-glass-card" data-format="Convencao de vendas">
+              <div class="opt-title">Convenção<br />de vendas</div>
+              <div class="opt-desc">Kickoff, alinhamento e reconhecimento do time</div>
+            </div>
 
-      <div class="option-glass-card row-1 selected" style="left: 135px; width: 106px;" data-format="Lancamento de produto">
-        <div class="opt-title">Lançamento<br />de produto</div>
-        <div class="opt-desc">Imprensa, canais, clientes e parceiros</div>
-      </div>
+            <div class="option-glass-card selected" data-format="Lancamento de produto">
+              <div class="opt-title">Lançamento<br />de produto</div>
+              <div class="opt-desc">Imprensa, canais, clientes e parceiros</div>
+            </div>
 
-      <div class="option-glass-card row-1" style="left: 248px; width: 105px;" data-format="Evento Institucional">
-        <div class="opt-title">Evento<br />Institucional</div>
-        <div class="opt-desc">Premiação, aniversário, encontro de liderança</div>
-      </div>
+            <div class="option-glass-card" data-format="Evento Institucional">
+              <div class="opt-title">Evento<br />Institucional</div>
+              <div class="opt-desc">Premiação, aniversário, encontro de liderança</div>
+            </div>
 
-      <div class="option-glass-card row-2" style="left: 23px; width: 105px;" data-format="Ativacao de marca">
-        <div class="opt-title">Ativação de<br />marca</div>
-        <div class="opt-desc">Experiência em shopping, rua, festival ou evento</div>
-      </div>
+            <div class="option-glass-card" data-format="Ativacao de marca">
+              <div class="opt-title">Ativação de<br />marca</div>
+              <div class="opt-desc">Experiência em shopping, rua, festival ou evento</div>
+            </div>
 
-      <div class="option-glass-card row-2" style="left: 135px; width: 106px;" data-format="Congresso">
-        <div class="opt-title" style="margin-bottom: 10px;">Congresso</div>
-        <div class="opt-desc">Programação científica ou técnica, salas e palestrantes</div>
-      </div>
+            <div class="option-glass-card" data-format="Congresso">
+              <div class="opt-title">Congresso</div>
+              <div class="opt-desc">Programação científica ou técnica, salas e palestrantes</div>
+            </div>
 
-      <div class="option-glass-card row-2" style="left: 248px; width: 105px;" data-format="Feira e estande">
-        <div class="opt-title" style="margin-bottom: 10px;">Feira e estande</div>
-        <div class="opt-desc">Participação com estande em pavilhão</div>
-      </div>
+            <div class="option-glass-card" data-format="Feira e estande">
+              <div class="opt-title">Feira e estande</div>
+              <div class="opt-desc">Participação com estande em pavilhão</div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Barra Seguir próxima pergunta -->
-      <button type="button" id="btn-next-p1" class="btn-next-bar">
-        <span class="next-bar-label">Seguir próxima pergunta</span>
-        <span class="next-bar-circle">
-          <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
-        </span>
-      </button>
+        <div class="quiz-bottom-controls">
+          <!-- Barra Seguir próxima pergunta -->
+          <button type="button" id="btn-next-p1" class="btn-next-bar">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
 
-      <!-- Cards inferiores de status -->
-      <div class="status-pill-left">
-        <div class="rem-number">05</div>
-        <div class="rem-label">Perguntas restantes</div>
-      </div>
+          <!-- Cards inferiores de status -->
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number">05</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
 
-      <div class="status-pill-right">
-        <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
-        <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
-        <div id="pts-p1" class="pts-value">100 <small>pts</small></div>
-        <div class="pts-label">Conquistados</div>
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div id="pts-p1" class="pts-value">100 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Navegação inferior -->
@@ -198,32 +204,32 @@
       <!-- Overlay curvo em vidro fosco idêntico ao Figma (#9215:289) -->
       <div class="loc-glass-curve"></div>
 
-      <!-- Textos e Linha nas coordenadas exatas do Figma (#9215:294, #9215:296, #9215:295) -->
-      <h2 class="loc-title">Onde será o evento?</h2>
-      <p class="loc-subtitle">Escreva o local e selecione a partir do maps</p>
+      <div class="loc-content-box">
+        <h2 class="loc-title">Onde será o evento?</h2>
+        <p class="loc-subtitle">Escreva o local e selecione a partir do maps</p>
 
-      <!-- Linha de input exata do Figma (x: 57, y: 603, w: 261) -->
-      <div class="loc-input-wrap">
-        <input
-          type="text"
-          id="loc-input"
-          class="loc-input"
-          placeholder=""
-          autocomplete="off"
-        />
-        <span id="loc-confirmed-check" class="loc-confirmed-check" title="Endereço confirmado">✓</span>
+        <div class="loc-input-wrap">
+          <input
+            type="text"
+            id="loc-input"
+            class="loc-input"
+            placeholder=""
+            autocomplete="off"
+          />
+          <span id="loc-confirmed-check" class="loc-confirmed-check" title="Endereço confirmado">✓</span>
 
-        <!-- Lista limpa de endereços reais do Maps que aparece ao digitar -->
-        <div id="loc-autocomplete-list" class="loc-autocomplete-list"></div>
+          <!-- Lista limpa de endereços reais do Maps que aparece ao digitar -->
+          <div id="loc-autocomplete-list" class="loc-autocomplete-list"></div>
+        </div>
+
+        <!-- Botão branco (padrão Figma #9216:378) que surge somente após selecionar o endereço da lista -->
+        <button type="button" id="loc-next-btn" class="btn-white-pill-next loc-emerging-next">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Seguir" />
+          </span>
+        </button>
       </div>
-
-      <!-- Botão branco (padrão Figma #9216:378) que surge somente após selecionar o endereço da lista -->
-      <button type="button" id="loc-next-btn" class="btn-white-pill-next loc-emerging-next">
-        <span class="pill-label">Seguir próxima pergunta</span>
-        <span class="pill-circle">
-          <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Seguir" />
-        </span>
-      </button>
 
       <!-- Navegação inferior -->
       <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
@@ -264,7 +270,7 @@
         <span id="pax-value-text" class="pax-value-text">500 pax</span>
       </div>
 
-      <!-- Indicadores visuais de rotação ao lado do pill (posições exatas do Figma: x=194, y=352 e y=369) -->
+      <!-- Indicadores visuais de rotação ao lado do pill -->
       <img src="../../assets/icons/icon_chevron_up.svg" alt="" class="pax-chevron-indicator up" />
       <img src="../../assets/icons/icon_chevron_down.svg" alt="" class="pax-chevron-indicator down" />
 
@@ -283,7 +289,7 @@
       </aside>
 
       <!-- Botão Seguir próxima pergunta -->
-      <button type="button" id="btn-next-qtd" class="btn-white-pill-next">
+      <button type="button" id="btn-next-qtd" class="btn-white-pill-next qtd-next-btn">
         <span class="pill-label">Seguir próxima pergunta</span>
         <span class="pill-circle">
           <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
@@ -308,51 +314,63 @@
         <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
       </button>
 
-      <h2 class="quiz-big-title">Padrão de<br />entrega</h2>
-      <p class="quiz-sub-question">Qual é o padrão de entrega?</p>
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <h2 class="quiz-big-title">Padrão de<br />entrega</h2>
+          <p class="quiz-sub-question">Qual é o padrão de entrega?</p>
+        </div>
 
-      <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+        <div class="quiz-options-stage">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
 
-      <!-- 4 Opções em Grid (2x2) exatas do Figma -->
-      <div class="option-glass-card large-opt row-1" style="left: 23px; width: 159px;" data-padrao="Essencial">
-        <div class="opt-title">Essencial</div>
-        <div class="opt-desc">Funcional e bem executado, sem grandes efeitos</div>
-      </div>
+          <!-- 4 Opções em Grid (2x2) -->
+          <div class="quiz-options-grid cols-2">
+            <div class="option-glass-card large-opt" data-padrao="Essencial">
+              <div class="opt-title">Essencial</div>
+              <div class="opt-desc">Funcional e bem executado, sem grandes efeitos</div>
+            </div>
 
-      <div class="option-glass-card large-opt row-1" style="left: 193px; width: 161px;" data-padrao="Corporativo">
-        <div class="opt-title">Corporativo</div>
-        <div class="opt-desc">Boa produção, cenografia e conteúdo próprios</div>
-      </div>
+            <div class="option-glass-card large-opt" data-padrao="Corporativo">
+              <div class="opt-title">Corporativo</div>
+              <div class="opt-desc">Boa produção, cenografia e conteúdo próprios</div>
+            </div>
 
-      <div class="option-glass-card large-opt row-2 selected" style="left: 23px; width: 159px;" data-padrao="Premium">
-        <div class="opt-title">Premium</div>
-        <div class="opt-desc">Experiência de alto impacto visual</div>
-      </div>
+            <div class="option-glass-card large-opt selected" data-padrao="Premium">
+              <div class="opt-title">Premium</div>
+              <div class="opt-desc">Experiência de alto impacto visual</div>
+            </div>
 
-      <div class="option-glass-card large-opt row-2" style="left: 193px; width: 161px;" data-padrao="Iconico">
-        <div class="opt-title">Icônico</div>
-        <div class="opt-desc">Projeto autoral, grandes atrações, referência de mercado</div>
-      </div>
+            <div class="option-glass-card large-opt" data-padrao="Iconico">
+              <div class="opt-title">Icônico</div>
+              <div class="opt-desc">Projeto autoral, grandes atrações, referência de mercado</div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Barra Seguir próxima pergunta -->
-      <button type="button" id="btn-next-padrao" class="btn-next-bar">
-        <span class="next-bar-label">Seguir próxima pergunta</span>
-        <span class="next-bar-circle">
-          <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
-        </span>
-      </button>
+        <div class="quiz-bottom-controls">
+          <!-- Barra Seguir próxima pergunta -->
+          <button type="button" id="btn-next-padrao" class="btn-next-bar">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
 
-      <!-- Cards inferiores de status -->
-      <div class="status-pill-left">
-        <div class="rem-number">01</div>
-        <div class="rem-label">Perguntas restantes</div>
-      </div>
+          <!-- Cards inferiores de status -->
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number">01</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
 
-      <div class="status-pill-right">
-        <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
-        <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
-        <div id="pts-padrao" class="pts-value">450 <small>pts</small></div>
-        <div class="pts-label">Acomulados</div>
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div id="pts-padrao" class="pts-value">450 <small>pts</small></div>
+              <div class="pts-label">Acomulados</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Navegação inferior -->
@@ -368,10 +386,12 @@
          SEÇÃO 7: O QUE ENTRA NA CONTA? (#9216:347)
          =================================================================== -->
     <section id="screen-o-que-entra" class="screen" aria-label="O que entra na conta?">
-      <div class="timeline-vertical-line"></div>
+      <div class="entra-stage">
+        <div class="timeline-vertical-line"></div>
 
-      <!-- Lista interativa (clique alterna Bold/Black sem limite de seleção) -->
-      <div id="entra-list-scroll" class="entra-list-scroll"></div>
+        <!-- Lista interativa (clique alterna Bold/Black sem limite de seleção) -->
+        <div id="entra-list-scroll" class="entra-list-scroll"></div>
+      </div>
 
       <!-- Gradientes superior e inferior idênticos ao Figma (#9216:366 e #9216:365) -->
       <div class="entra-fade-top"></div>
@@ -388,7 +408,7 @@
       </div>
 
       <!-- Botão Ver minha estimativa -->
-      <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label" style="left: 102px; bottom: 120px;">
+      <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label entra-next-btn">
         <span class="pill-label">Ver minha estimativa</span>
         <span class="pill-circle">
           <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Ver" />
@@ -408,22 +428,24 @@
          SEÇÃO 8: LOGIN (#9205:10) & SIGN UP (#9202:203)
          =================================================================== -->
     <section id="screen-auth" class="screen" aria-label="Login e Cadastro">
-      <img src="../../assets/icons/logo_large_black.svg" alt="Logo RSTCOM" class="auth-top-logo" data-action="go-home" />
-      <img src="../../assets/icons/shape_login_bg.svg" alt="" class="auth-wave-bg" />
+      <div class="auth-stage">
+        <img src="../../assets/icons/logo_large_black.svg" alt="Logo RSTCOM" class="auth-top-logo" data-action="go-home" />
+        <img src="../../assets/icons/shape_login_bg.svg" alt="" class="auth-wave-bg" />
 
-      <div class="auth-tabs-pill">
-        <div class="auth-tab-indicator"></div>
-        <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
-        <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
-      </div>
+        <div class="auth-tabs-pill">
+          <div class="auth-tab-indicator"></div>
+          <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
+          <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
+        </div>
 
-      <div id="auth-form-container" class="auth-form-container"></div>
+        <div id="auth-form-container" class="auth-form-container"></div>
 
-      <div id="remember-me-row" class="remember-me-row">
-        <span>Remember me</span>
-        <button type="button" id="toggle-remember-btn" class="figma-toggle-btn active" aria-label="Remember me">
-          <span class="knob"></span>
-        </button>
+        <div id="remember-me-row" class="remember-me-row">
+          <span>Remember me</span>
+          <button type="button" id="toggle-remember-btn" class="figma-toggle-btn active" aria-label="Remember me">
+            <span class="knob"></span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -437,58 +459,62 @@
       </button>
 
       <div class="resultado-scroll-container">
-        <!-- Card Principal com a Faixa de Investimento -->
-        <div class="res-hero-card">
-          <div class="res-hero-top-row">
-            <span id="res-user-tag" class="res-tag-orange">ARTHUR, SUA ESTIMATIVA</span>
-            <span id="res-format-tag" class="res-tag-format">LANÇAMENTO DE PRODUTO</span>
+        <div class="resultado-inner-wrap">
+          <!-- Card Principal com a Faixa de Investimento -->
+          <div class="res-hero-card">
+            <div class="res-hero-top-row">
+              <span id="res-user-tag" class="res-tag-orange">ARTHUR, SUA ESTIMATIVA</span>
+              <span id="res-format-tag" class="res-tag-format">LANÇAMENTO DE PRODUTO</span>
+            </div>
+
+            <div class="res-label-custo">SEU EVENTO PODE CUSTAR DE</div>
+            <div id="res-price-min" class="res-price-big">R$ 7,1 mi</div>
+            <div class="res-price-sep">A</div>
+            <div id="res-price-max" class="res-price-big">R$ 12,65 mi</div>
+
+            <div id="res-per-pax" class="res-per-pax">
+              Por participante: R$ 4.589 a R$ 8.143
+            </div>
+
+            <div id="res-summary-pills" class="res-summary-pills"></div>
           </div>
 
-          <div class="res-label-custo">SEU EVENTO PODE CUSTAR DE</div>
-          <div id="res-price-min" class="res-price-big">R$ 7,1 mi</div>
-          <div class="res-price-sep">A</div>
-          <div id="res-price-max" class="res-price-big">R$ 12,65 mi</div>
+          <div class="res-bottom-grid">
+            <!-- Card "Onde o dinheiro vai" -->
+            <div class="res-section-card">
+              <h3 class="res-card-title">Onde o dinheiro vai</h3>
+              <div id="res-bars-container"></div>
+              <p class="res-footnote">
+                Participação nos custos diretos, antes de honorários, contingência e impostos.
+              </p>
+            </div>
 
-          <div id="res-per-pax" class="res-per-pax">
-            Por participante: R$ 4.589 a R$ 8.143
+            <!-- Card "[ PLANILHA COMPLETA ]" -->
+            <div class="res-paywall-card">
+              <div class="paywall-tag">[ PLANILHA COMPLETA ]</div>
+              <h3 class="paywall-title">Veja item a item o que compõe esse valor</h3>
+
+              <div class="paywall-blurred-preview">
+                <div>Locação do espaço principal  1 × R$ 180.000</div>
+                <div>Diária de montagem e desmontagem  2 × R$ 45.000</div>
+                <div>Salas de apoio e camarins  3 × R$ 18.500</div>
+                <div>ECAD e direitos de execução  1 × R$ 12.750</div>
+              </div>
+
+              <ul class="paywall-checklist">
+                <li><span class="check-icon">✓</span> <span>47 itens com quantidade e valores mínimo e máximo</span></li>
+                <li><span class="check-icon">✓</span> <span>Fórmulas abertas, edite como quiser</span></li>
+                <li><span class="check-icon">✓</span> <span>Resumo por categoria para a diretoria</span></li>
+              </ul>
+
+              <div class="paywall-price">R$ 49,90</div>
+              <div class="paywall-price-sub">Pagamento único • Excel .xlsx</div>
+
+              <button type="button" id="btn-ir-pagamento" class="btn-simular-pagamento">
+                Simular pagamento e liberar
+              </button>
+            </div>
           </div>
-
-          <div id="res-summary-pills" class="res-summary-pills"></div>
-        </div>
-
-        <!-- Card "Onde o dinheiro vai" -->
-        <div class="res-section-card">
-          <h3 class="res-card-title">Onde o dinheiro vai</h3>
-          <div id="res-bars-container"></div>
-          <p class="res-footnote">
-            Participação nos custos diretos, antes de honorários, contingência e impostos.
-          </p>
-        </div>
-
-        <!-- Card "[ PLANILHA COMPLETA ]" -->
-        <div class="res-paywall-card">
-          <div class="paywall-tag">[ PLANILHA COMPLETA ]</div>
-          <h3 class="paywall-title">Veja item a item o que compõe esse valor</h3>
-
-          <div class="paywall-blurred-preview">
-            <div>Locação do espaço principal  1 × R$ 180.000</div>
-            <div>Diária de montagem e desmontagem  2 × R$ 45.000</div>
-            <div>Salas de apoio e camarins  3 × R$ 18.500</div>
-            <div>ECAD e direitos de execução  1 × R$ 12.750</div>
-          </div>
-
-          <ul class="paywall-checklist">
-            <li><span class="check-icon">✓</span> <span>47 itens com quantidade e valores mínimo e máximo</span></li>
-            <li><span class="check-icon">✓</span> <span>Fórmulas abertas, edite como quiser</span></li>
-            <li><span class="check-icon">✓</span> <span>Resumo por categoria para a diretoria</span></li>
-          </ul>
-
-          <div class="paywall-price">R$ 49,90</div>
-          <div class="paywall-price-sub">Pagamento único • Excel .xlsx</div>
-
-          <button type="button" id="btn-ir-pagamento" class="btn-simular-pagamento">
-            Simular pagamento e liberar
-          </button>
         </div>
       </div>
 
@@ -511,62 +537,64 @@
       </button>
 
       <div class="pagamento-scroll">
-        <div class="pay-header-card">
-          <span class="badge">LIBERAÇÃO IMEDIATA • EXCEL ABERTO</span>
-          <h2>Finalizar e abrir planilha</h2>
-          <p>Insira os dados abaixo para liberar o detalhamento completo de custos e receber no e-mail.</p>
-        </div>
-
-        <div class="pay-method-tabs">
-          <button type="button" class="pay-method-tab active" data-pay-method="cartao">💳 Cartão</button>
-          <button type="button" class="pay-method-tab" data-pay-method="pix">⚡ PIX (Instantâneo)</button>
-        </div>
-
-        <div class="pay-form-card">
-          <button type="button" id="btn-autofill-demo" class="btn-autofill-demo">
-            ✨ Preencher dados de simulação com 1 clique
-          </button>
-
-          <div class="pay-input-group">
-            <label for="pay-name">Nome ou Empresa</label>
-            <input type="text" id="pay-name" placeholder="Ex: Arthur - Diretoria de Marketing" value="Arthur" />
+        <div class="pagamento-inner-wrap">
+          <div class="pay-header-card">
+            <span class="badge">LIBERAÇÃO IMEDIATA • EXCEL ABERTO</span>
+            <h2>Finalizar e abrir planilha</h2>
+            <p>Insira os dados abaixo para liberar o detalhamento completo de custos e receber no e-mail.</p>
           </div>
 
-          <div class="pay-input-group">
-            <label for="pay-email">E-mail para receber a planilha e resumo</label>
-            <input type="email" id="pay-email" placeholder="seuemail@empresa.com.br" value="arthur@rstcom.com.br" />
+          <div class="pay-method-tabs">
+            <button type="button" class="pay-method-tab active" data-pay-method="cartao">💳 Cartão</button>
+            <button type="button" class="pay-method-tab" data-pay-method="pix">⚡ PIX (Instantâneo)</button>
           </div>
 
-          <div id="pay-card-fields">
+          <div class="pay-form-card">
+            <button type="button" id="btn-autofill-demo" class="btn-autofill-demo">
+              ✨ Preencher dados de simulação com 1 clique
+            </button>
+
             <div class="pay-input-group">
-              <label for="pay-card-number">Número do Cartão (Simulação)</label>
-              <input type="text" id="pay-card-number" placeholder="0000 0000 0000 0000" value="4532 •••• •••• 8890" />
+              <label for="pay-name">Nome ou Empresa</label>
+              <input type="text" id="pay-name" placeholder="Ex: Arthur - Diretoria de Marketing" value="Arthur" />
             </div>
 
-            <div class="pay-row-2col">
+            <div class="pay-input-group">
+              <label for="pay-email">E-mail para receber a planilha e resumo</label>
+              <input type="email" id="pay-email" placeholder="seuemail@empresa.com.br" value="arthur@rstcom.com.br" />
+            </div>
+
+            <div id="pay-card-fields">
               <div class="pay-input-group">
-                <label for="pay-card-exp">Validade</label>
-                <input type="text" id="pay-card-exp" placeholder="MM/AA" value="08/29" />
+                <label for="pay-card-number">Número do Cartão (Simulação)</label>
+                <input type="text" id="pay-card-number" placeholder="0000 0000 0000 0000" value="4532 •••• •••• 8890" />
               </div>
-              <div class="pay-input-group">
-                <label for="pay-card-cvv">CVV</label>
-                <input type="text" id="pay-card-cvv" placeholder="123" value="742" />
+
+              <div class="pay-row-2col">
+                <div class="pay-input-group">
+                  <label for="pay-card-exp">Validade</label>
+                  <input type="text" id="pay-card-exp" placeholder="MM/AA" value="08/29" />
+                </div>
+                <div class="pay-input-group">
+                  <label for="pay-card-cvv">CVV</label>
+                  <input type="text" id="pay-card-cvv" placeholder="123" value="742" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div id="pay-pix-fields" style="display: none; text-align: center; padding: 10px 0 14px;">
-            <div style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
-              [ QR CODE PIX SIMULADO • R$ 49,90 ]
+            <div id="pay-pix-fields" style="display: none; text-align: center; padding: 10px 0 14px;">
+              <div style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
+                [ QR CODE PIX SIMULADO • R$ 49,90 ]
+              </div>
+              <p style="font-size: 9.5px; color: rgba(255,255,255,0.7);">
+                Clique no botão abaixo para simular a confirmação imediata do PIX.
+              </p>
             </div>
-            <p style="font-size: 9.5px; color: rgba(255,255,255,0.7);">
-              Clique no botão abaixo para simular a confirmação imediata do PIX.
-            </p>
-          </div>
 
-          <button type="button" id="btn-confirmar-pagamento" class="btn-confirmar-pagamento">
-            Confirmar R$ 49,90 e abrir Excel agora →
-          </button>
+            <button type="button" id="btn-confirmar-pagamento" class="btn-confirmar-pagamento">
+              Confirmar R$ 49,90 e abrir Excel agora →
+            </button>
+          </div>
         </div>
       </div>
 
@@ -636,6 +664,5 @@
   <script src="../../js/app.js"></script>
 </body>
 </html>
-
 
 <script>window.addEventListener('DOMContentLoaded', () => { if(window.navigateTo) window.navigateTo('screen-pergunta-1', false); });</script>

@@ -23,43 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (metaTheme) {
       metaTheme.setAttribute('content', color);
     }
-    if (window.innerWidth <= 768) {
-      document.documentElement.style.backgroundColor = color;
-      document.body.style.backgroundColor = color;
-    } else {
-      document.documentElement.style.backgroundColor = '';
-      document.body.style.backgroundColor = '';
+    document.documentElement.style.backgroundColor = color;
+    document.body.style.backgroundColor = color;
+    const shell = document.querySelector('.phone-shell');
+    if (shell) {
+      shell.style.backgroundColor = color;
     }
   }
-
-  // Ajuste responsivo proporcional (1:1 sem distorção) preenchendo 100% da tela do celular
-  let baseMobileHeight = window.innerHeight;
 
   function fitMobileViewport() {
     const shell = document.querySelector('.phone-shell');
     if (!shell) return;
-    if (window.innerWidth <= 768) {
-      const vw = document.documentElement.clientWidth || window.innerWidth;
-      const activeTag = document.activeElement ? document.activeElement.tagName : '';
-      const isInputFocused = activeTag === 'INPUT' || activeTag === 'TEXTAREA';
-      const rawVh = window.visualViewport && !isInputFocused
-        ? window.visualViewport.height
-        : window.innerHeight;
-      if (!isInputFocused && rawVh > 480) {
-        baseMobileHeight = rawVh;
-      }
-      const vh = isInputFocused ? Math.max(baseMobileHeight, rawVh) : rawVh;
-      // Escala uniforme (mesmo valor em X e Y para NUNCA distorcer ou achatar nada)
-      const scale = vw / 375;
-      const virtualHeight = Math.round(vh / scale);
-      shell.style.setProperty('--app-height', `${virtualHeight}px`);
-      shell.style.transform = `scale(${scale})`;
-      shell.classList.toggle('compact-vh', virtualHeight < 785);
-    } else {
-      shell.style.removeProperty('--app-height');
-      shell.style.transform = '';
-      shell.classList.remove('compact-vh');
-    }
+    shell.style.removeProperty('--app-height');
+    shell.style.transform = '';
+    shell.classList.remove('compact-vh');
     syncBrowserThemeColor(AppState?.currentScreen || 'screen-iniciar');
   }
 
