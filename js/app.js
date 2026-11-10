@@ -3,6 +3,32 @@
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Ajuste responsivo tela cheia no celular (preenche 100% da largura e altura sem bordas ou cortes laterais)
+  let baseMobileHeight = window.innerHeight;
+
+  function fitMobileViewport() {
+    const shell = document.querySelector('.phone-shell');
+    if (!shell) return;
+    if (window.innerWidth <= 768) {
+      const vw = document.documentElement.clientWidth || window.innerWidth;
+      const activeTag = document.activeElement ? document.activeElement.tagName : '';
+      const isInputFocused = activeTag === 'INPUT' || activeTag === 'TEXTAREA';
+      if (!isInputFocused && window.innerHeight > 480) {
+        baseMobileHeight = window.innerHeight;
+      }
+      const vh = isInputFocused ? Math.max(baseMobileHeight, window.innerHeight) : window.innerHeight;
+      const sx = vw / 375;
+      const sy = vh / 812;
+      shell.style.transform = `scale(${sx}, ${sy})`;
+    } else {
+      shell.style.transform = '';
+    }
+  }
+
+  fitMobileViewport();
+  window.addEventListener('resize', fitMobileViewport);
+  window.addEventListener('orientationchange', () => setTimeout(fitMobileViewport, 120));
+
   const AppState = {
     currentScreen: 'screen-iniciar',
     history: [],
@@ -685,6 +711,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!authScreen) return;
     const isSignup = mode === 'signup';
     authScreen.classList.toggle('signup-mode', isSignup);
+    const waveImg = authScreen.querySelector('.auth-wave-bg');
+    if (waveImg) {
+      const prefix = waveImg.getAttribute('src').includes('../../') ? '../../' : '';
+      waveImg.setAttribute('src', `${prefix}assets/icons/${isSignup ? 'shape_signup_bg.svg' : 'shape_login_bg.svg'}`);
+    }
     tabLoginBtn?.classList.toggle('active', !isSignup);
     tabSignupBtn?.classList.toggle('active', isSignup);
     if (rememberRow) {
