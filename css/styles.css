@@ -95,7 +95,7 @@ html, body {
 .phone-shell {
   position: relative;
   width: 375px;
-  height: 812px;
+  height: var(--app-height, 812px);
   background: var(--bg-light);
   border-radius: 42px;
   box-shadow:
@@ -128,7 +128,7 @@ html, body {
     top: 0;
     left: 0;
     width: 375px;
-    height: 812px;
+    height: var(--app-height, 812px);
     border-radius: 0;
     box-shadow: none;
     margin: 0;
@@ -141,7 +141,7 @@ html, body {
   position: absolute;
   inset: 0;
   width: 375px;
-  height: 812px;
+  height: 100%;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
@@ -269,7 +269,8 @@ html, body {
   left: -41px;
   top: 0;
   width: 457px;
-  height: 812px;
+  height: 100%;
+  min-height: 812px;
   object-fit: cover;
   pointer-events: none;
   animation: slowBreath 12s ease-in-out infinite alternate;
@@ -761,7 +762,8 @@ html, body {
   left: -169px;
   top: 0;
   width: 586px;
-  height: 812px;
+  height: 100%;
+  min-height: 812px;
   object-fit: cover;
   pointer-events: none;
 }
@@ -769,7 +771,7 @@ html, body {
 #screen-localizacao .loc-glass-curve {
   position: absolute;
   left: 0;
-  top: 357px;
+  bottom: 0;
   width: 375px;
   height: 455px;
   background: rgba(217, 217, 217, 0.2);

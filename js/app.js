@@ -173,12 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // SEÇÃO 1: INICIAR
+  // SEÇÃO 1: INICIAR -> VAI DIRETO PARA LOGIN / SIGN UP ANTES DO QUESTIONÁRIO
   // ==========================================================================
   const btnAgoraMesmo = document.getElementById('btn-agora-mesmo');
   if (btnAgoraMesmo) {
     btnAgoraMesmo.addEventListener('click', () => {
-      goToScreen('screen-pergunta-1', true);
+      goToScreen('screen-auth', true);
     });
   }
 
