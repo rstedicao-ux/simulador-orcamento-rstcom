@@ -3,7 +3,7 @@
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ajuste responsivo tela cheia no celular (preenche 100% da largura e altura sem bordas ou cortes laterais)
+  // Ajuste responsivo proporcional (1:1 sem distorção) preenchendo 100% da tela do celular
   let baseMobileHeight = window.innerHeight;
 
   function fitMobileViewport() {
@@ -17,10 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         baseMobileHeight = window.innerHeight;
       }
       const vh = isInputFocused ? Math.max(baseMobileHeight, window.innerHeight) : window.innerHeight;
-      const sx = vw / 375;
-      const sy = vh / 812;
-      shell.style.transform = `scale(${sx}, ${sy})`;
+      // Escala uniforme (mesmo valor em X e Y para NUNCA distorcer ou achatar nada)
+      const scale = vw / 375;
+      const virtualHeight = Math.round(vh / scale);
+      shell.style.setProperty('--app-height', `${virtualHeight}px`);
+      shell.style.transform = `scale(${scale})`;
     } else {
+      shell.style.removeProperty('--app-height');
       shell.style.transform = '';
     }
   }

@@ -93,9 +93,11 @@ html, body {
 
 /* Mobile Frame Viewport (375x812 exact Figma dimensions) */
 .phone-shell {
+  --app-height: 812px;
+  --y-shift: clamp(-68px, calc(var(--app-height) - 812px), 0px);
   position: relative;
   width: 375px;
-  height: var(--app-height, 812px);
+  height: var(--app-height);
   background: var(--bg-light);
   border-radius: 42px;
   box-shadow:
@@ -200,11 +202,11 @@ html, body {
   transform: scale(1.12);
 }
 
-/* Common Bottom Navigation Circles */
+/* Common Bottom Navigation Circles (ancorados no rodapé para nunca cortar em navegadores mobile) */
 .nav-circle-back {
   position: absolute;
   left: 10px;
-  top: 708px;
+  bottom: 21px;
   width: 83px;
   height: 83px;
   border-radius: 50%;
@@ -234,7 +236,7 @@ html, body {
 .nav-circle-home {
   position: absolute;
   left: 283px;
-  top: 710px;
+  bottom: 19px;
   width: 83px;
   height: 83px;
   border-radius: 50%;
@@ -413,7 +415,7 @@ html, body {
 #screen-menu .menu-line-bottom {
   position: absolute;
   left: 35px;
-  top: 721px;
+  bottom: 91px;
   width: 305px;
   height: 0.5px;
   background: rgba(0, 0, 0, 0.65);
@@ -476,7 +478,7 @@ html, body {
 #screen-menu .brasil-footer {
   position: absolute;
   left: 35px;
-  top: 736px;
+  bottom: 61px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -506,7 +508,7 @@ html, body {
 .quiz-big-title {
   position: absolute;
   left: 30px;
-  top: 117px;
+  top: calc(117px + var(--y-shift, 0px));
   width: 285px;
   height: 100px;
   font-family: var(--font-inter);
@@ -520,7 +522,7 @@ html, body {
 .quiz-sub-question {
   position: absolute;
   left: 31px;
-  top: 237px;
+  top: calc(237px + var(--y-shift, 0px));
   width: 260px;
   height: 18px;
   font-family: var(--font-inter);
@@ -532,7 +534,7 @@ html, body {
 .quiz-card-backdrop {
   position: absolute;
   left: 9px;
-  top: 276px;
+  top: calc(276px + var(--y-shift, 0px));
   width: 357px;
   height: 260px;
   border-radius: 46px;
@@ -545,6 +547,7 @@ html, body {
 .option-glass-card {
   position: absolute;
   height: 116px;
+  margin-top: var(--y-shift, 0px);
   border-radius: 46px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
@@ -611,7 +614,7 @@ html, body {
 .btn-next-bar {
   position: absolute;
   left: 9px;
-  top: 543px;
+  top: calc(543px + var(--y-shift, 0px));
   width: 357px;
   height: 73px;
   border-radius: 46px;
@@ -666,7 +669,7 @@ html, body {
 .status-pill-left {
   position: absolute;
   left: 10px;
-  top: 623px;
+  top: calc(623px + var(--y-shift, 0px));
   width: 174px;
   height: 73px;
   border-radius: 46px;
@@ -698,7 +701,7 @@ html, body {
 .status-pill-right {
   position: absolute;
   left: 192px;
-  top: 623px;
+  top: calc(623px + var(--y-shift, 0px));
   width: 174px;
   height: 73px;
   border-radius: 46px;
@@ -788,7 +791,7 @@ html, body {
 #screen-localizacao .loc-title {
   position: absolute;
   left: 67px;
-  top: 505px;
+  bottom: 282px;
   width: 241px;
   height: 25px;
   font-family: var(--font-inter);
@@ -803,7 +806,7 @@ html, body {
 #screen-localizacao .loc-subtitle {
   position: absolute;
   left: 63px;
-  top: 530px;
+  bottom: 258px;
   width: 249px;
   height: 13px;
   font-family: var(--font-inter);
@@ -818,7 +821,7 @@ html, body {
 .loc-input-wrap {
   position: absolute;
   left: 57px;
-  top: 572px;
+  bottom: 205px;
   width: 261px;
   z-index: 30;
 }
@@ -921,7 +924,8 @@ html, body {
 /* Botão branco de seguir que surge após confirmar o endereço */
 .loc-emerging-next {
   left: 102px;
-  top: 642px;
+  bottom: 136px;
+  top: auto;
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px) scale(0.95);
@@ -1529,7 +1533,7 @@ html, body {
 #screen-auth .auth-top-logo {
   position: absolute;
   left: 143px;
-  top: 72px;
+  top: calc(72px + (var(--y-shift, 0px) * 0.45));
   width: 88px;
   height: 88px;
   cursor: pointer;
@@ -1539,10 +1543,9 @@ html, body {
 #screen-auth .auth-wave-bg {
   position: absolute;
   left: 0;
-  top: 86px;
+  top: calc(86px + (var(--y-shift, 0px) * 0.5));
   width: 375px;
   height: 652px;
-  object-fit: fill;
   pointer-events: none;
   transition: height 0.35s ease;
 }
@@ -1554,7 +1557,7 @@ html, body {
 .auth-tabs-pill {
   position: absolute;
   left: 65px;
-  top: 238px;
+  top: calc(238px + (var(--y-shift, 0px) * 0.65));
   width: 245px;
   height: 30px;
   border-radius: 25px;
@@ -1601,7 +1604,7 @@ html, body {
 .auth-form-container {
   position: absolute;
   left: 65px;
-  top: 325px;
+  top: calc(325px + (var(--y-shift, 0px) * 0.8));
   width: 245px;
   z-index: 25;
 }
@@ -1656,7 +1659,7 @@ html, body {
 .remember-me-row {
   position: absolute;
   left: 187px;
-  top: 763px;
+  bottom: 24px;
   display: flex;
   align-items: center;
   gap: 9px;
