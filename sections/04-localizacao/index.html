@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" id="meta-theme-color" content="#D8D8D8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>RSTCOM — Quanto custa seu próximo evento?</title>
   <link rel="stylesheet" href="../../css/styles.css" />
   <link rel="stylesheet" href="../../css/animations.css" />
@@ -121,33 +124,33 @@
       <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
 
       <!-- 6 Opções em Grid (2 linhas x 3 colunas) exatas do Figma -->
-      <div class="option-glass-card" style="left: 23px; top: 286px; width: 105px;" data-format="Convencao de vendas">
+      <div class="option-glass-card row-1" style="left: 23px; width: 105px;" data-format="Convencao de vendas">
         <div class="opt-title">Convenção<br />de vendas</div>
         <div class="opt-desc">Kickoff, alinhamento e reconhecimento do time</div>
       </div>
 
-      <div class="option-glass-card selected" style="left: 135px; top: 286px; width: 106px;" data-format="Lancamento de produto">
+      <div class="option-glass-card row-1 selected" style="left: 135px; width: 106px;" data-format="Lancamento de produto">
         <div class="opt-title">Lançamento<br />de produto</div>
         <div class="opt-desc">Imprensa, canais, clientes e parceiros</div>
       </div>
 
-      <div class="option-glass-card" style="left: 248px; top: 286px; width: 105px;" data-format="Evento Institucional">
+      <div class="option-glass-card row-1" style="left: 248px; width: 105px;" data-format="Evento Institucional">
         <div class="opt-title">Evento<br />Institucional</div>
         <div class="opt-desc">Premiação, aniversário, encontro de liderança</div>
       </div>
 
-      <div class="option-glass-card" style="left: 23px; top: 408px; width: 105px;" data-format="Ativacao de marca">
+      <div class="option-glass-card row-2" style="left: 23px; width: 105px;" data-format="Ativacao de marca">
         <div class="opt-title">Ativação de<br />marca</div>
         <div class="opt-desc">Experiência em shopping, rua, festival ou evento</div>
       </div>
 
-      <div class="option-glass-card" style="left: 135px; top: 408px; width: 106px;" data-format="Congresso">
-        <div class="opt-title" style="margin-bottom: 14px;">Congresso</div>
+      <div class="option-glass-card row-2" style="left: 135px; width: 106px;" data-format="Congresso">
+        <div class="opt-title" style="margin-bottom: 10px;">Congresso</div>
         <div class="opt-desc">Programação científica ou técnica, salas e palestrantes</div>
       </div>
 
-      <div class="option-glass-card" style="left: 248px; top: 408px; width: 105px;" data-format="Feira e estande">
-        <div class="opt-title" style="margin-bottom: 14px;">Feira e estande</div>
+      <div class="option-glass-card row-2" style="left: 248px; width: 105px;" data-format="Feira e estande">
+        <div class="opt-title" style="margin-bottom: 10px;">Feira e estande</div>
         <div class="opt-desc">Participação com estande em pavilhão</div>
       </div>
 
@@ -311,22 +314,22 @@
       <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
 
       <!-- 4 Opções em Grid (2x2) exatas do Figma -->
-      <div class="option-glass-card large-opt" style="left: 23px; top: 286px; width: 159px;" data-padrao="Essencial">
+      <div class="option-glass-card large-opt row-1" style="left: 23px; width: 159px;" data-padrao="Essencial">
         <div class="opt-title">Essencial</div>
         <div class="opt-desc">Funcional e bem executado, sem grandes efeitos</div>
       </div>
 
-      <div class="option-glass-card large-opt" style="left: 193px; top: 286px; width: 161px;" data-padrao="Corporativo">
+      <div class="option-glass-card large-opt row-1" style="left: 193px; width: 161px;" data-padrao="Corporativo">
         <div class="opt-title">Corporativo</div>
         <div class="opt-desc">Boa produção, cenografia e conteúdo próprios</div>
       </div>
 
-      <div class="option-glass-card large-opt selected" style="left: 23px; top: 408px; width: 159px;" data-padrao="Premium">
+      <div class="option-glass-card large-opt row-2 selected" style="left: 23px; width: 159px;" data-padrao="Premium">
         <div class="opt-title">Premium</div>
         <div class="opt-desc">Experiência de alto impacto visual</div>
       </div>
 
-      <div class="option-glass-card large-opt" style="left: 193px; top: 408px; width: 161px;" data-padrao="Iconico">
+      <div class="option-glass-card large-opt row-2" style="left: 193px; width: 161px;" data-padrao="Iconico">
         <div class="opt-title">Icônico</div>
         <div class="opt-desc">Projeto autoral, grandes atrações, referência de mercado</div>
       </div>
@@ -385,7 +388,7 @@
       </div>
 
       <!-- Botão Ver minha estimativa -->
-      <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label" style="left: 102px; top: 659px;">
+      <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label" style="left: 102px; bottom: 120px;">
         <span class="pill-label">Ver minha estimativa</span>
         <span class="pill-circle">
           <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Ver" />
@@ -631,7 +634,8 @@
 
   <script src="../../js/calculator.js"></script>
   <script src="../../js/app.js"></script>
-<script>window.addEventListener('DOMContentLoaded', () => { if (window.navigateTo) window.navigateTo('screen-localizacao', false); });</script></body>
+</body>
 </html>
 
 
+<script>window.addEventListener('DOMContentLoaded', () => { if(window.navigateTo) window.navigateTo('screen-localizacao', false); });</script>

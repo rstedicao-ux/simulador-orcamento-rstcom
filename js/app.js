@@ -3,6 +3,35 @@
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Cores exatas de fundo de cada tela para sincronizar com as barras do Safari/Chrome mobile
+  const SCREEN_THEME_COLORS = {
+    'screen-iniciar': '#D8D8D8',
+    'screen-menu': '#EBEBEB',
+    'screen-auth': '#FFFFFF',
+    'screen-pergunta-1': '#F0F0F0',
+    'screen-localizacao': '#EFEFEF',
+    'screen-qtd-pessoas': '#000000',
+    'screen-padrao-entrega': '#F0F0F0',
+    'screen-o-que-entra': '#000000',
+    'screen-resultado': '#080711',
+    'screen-pagamento': '#080711'
+  };
+
+  function syncBrowserThemeColor(screenId) {
+    const color = SCREEN_THEME_COLORS[screenId] || '#F0F0F0';
+    const metaTheme = document.getElementById('meta-theme-color');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', color);
+    }
+    if (window.innerWidth <= 768) {
+      document.documentElement.style.backgroundColor = color;
+      document.body.style.backgroundColor = color;
+    } else {
+      document.documentElement.style.backgroundColor = '';
+      document.body.style.backgroundColor = '';
+    }
+  }
+
   // Ajuste responsivo proporcional (1:1 sem distorção) preenchendo 100% da tela do celular
   let baseMobileHeight = window.innerHeight;
 
@@ -13,24 +42,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const vw = document.documentElement.clientWidth || window.innerWidth;
       const activeTag = document.activeElement ? document.activeElement.tagName : '';
       const isInputFocused = activeTag === 'INPUT' || activeTag === 'TEXTAREA';
-      if (!isInputFocused && window.innerHeight > 480) {
-        baseMobileHeight = window.innerHeight;
+      const rawVh = window.visualViewport && !isInputFocused
+        ? window.visualViewport.height
+        : window.innerHeight;
+      if (!isInputFocused && rawVh > 480) {
+        baseMobileHeight = rawVh;
       }
-      const vh = isInputFocused ? Math.max(baseMobileHeight, window.innerHeight) : window.innerHeight;
+      const vh = isInputFocused ? Math.max(baseMobileHeight, rawVh) : rawVh;
       // Escala uniforme (mesmo valor em X e Y para NUNCA distorcer ou achatar nada)
       const scale = vw / 375;
       const virtualHeight = Math.round(vh / scale);
       shell.style.setProperty('--app-height', `${virtualHeight}px`);
       shell.style.transform = `scale(${scale})`;
+      shell.classList.toggle('compact-vh', virtualHeight < 785);
     } else {
       shell.style.removeProperty('--app-height');
       shell.style.transform = '';
+      shell.classList.remove('compact-vh');
     }
+    syncBrowserThemeColor(AppState?.currentScreen || 'screen-iniciar');
   }
 
-  fitMobileViewport();
   window.addEventListener('resize', fitMobileViewport);
   window.addEventListener('orientationchange', () => setTimeout(fitMobileViewport, 120));
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitMobileViewport);
+  }
 
   const AppState = {
     currentScreen: 'screen-iniciar',
@@ -99,6 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Equipe de produção'
   ];
 
+  fitMobileViewport();
+
   // Toast helper
   function showToast(msg) {
     const toast = document.getElementById('app-toast');
@@ -130,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     targetEl.classList.add('active');
     AppState.currentScreen = targetId;
+    syncBrowserThemeColor(targetId);
 
     // Update top preview toolbar active state
     document.querySelectorAll('.preview-toolbar button[data-screen]').forEach(btn => {

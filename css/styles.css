@@ -94,7 +94,7 @@ html, body {
 /* Mobile Frame Viewport (375x812 exact Figma dimensions) */
 .phone-shell {
   --app-height: 812px;
-  --y-shift: clamp(-68px, calc(var(--app-height) - 812px), 0px);
+  --extra: clamp(0px, calc(var(--app-height) - 640px), 172px);
   position: relative;
   width: 375px;
   height: var(--app-height);
@@ -112,15 +112,14 @@ html, body {
 @media (max-width: 768px) {
   html, body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     min-height: 100dvh;
     margin: 0;
     padding: 0;
-    background: #000000;
+    background: var(--bg-light);
     display: block;
     overflow: hidden;
-    position: fixed;
-    inset: 0;
+    overscroll-behavior: none;
   }
   .preview-toolbar {
     display: none !important;
@@ -508,7 +507,7 @@ html, body {
 .quiz-big-title {
   position: absolute;
   left: 30px;
-  top: calc(117px + var(--y-shift, 0px));
+  top: 117px;
   width: 285px;
   height: 100px;
   font-family: var(--font-inter);
@@ -522,7 +521,7 @@ html, body {
 .quiz-sub-question {
   position: absolute;
   left: 31px;
-  top: calc(237px + var(--y-shift, 0px));
+  top: 237px;
   width: 260px;
   height: 18px;
   font-family: var(--font-inter);
@@ -534,7 +533,7 @@ html, body {
 .quiz-card-backdrop {
   position: absolute;
   left: 9px;
-  top: calc(276px + var(--y-shift, 0px));
+  top: 276px;
   width: 357px;
   height: 260px;
   border-radius: 46px;
@@ -547,7 +546,6 @@ html, body {
 .option-glass-card {
   position: absolute;
   height: 116px;
-  margin-top: var(--y-shift, 0px);
   border-radius: 46px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
@@ -566,6 +564,14 @@ html, body {
     border-color 0.28s ease,
     box-shadow 0.28s ease;
   z-index: 15;
+}
+
+.option-glass-card.row-1 {
+  top: 286px;
+}
+
+.option-glass-card.row-2 {
+  top: 408px;
 }
 
 .option-glass-card:hover {
@@ -614,7 +620,7 @@ html, body {
 .btn-next-bar {
   position: absolute;
   left: 9px;
-  top: calc(543px + var(--y-shift, 0px));
+  top: 543px;
   width: 357px;
   height: 73px;
   border-radius: 46px;
@@ -669,7 +675,7 @@ html, body {
 .status-pill-left {
   position: absolute;
   left: 10px;
-  top: calc(623px + var(--y-shift, 0px));
+  top: 623px;
   width: 174px;
   height: 73px;
   border-radius: 46px;
@@ -701,7 +707,7 @@ html, body {
 .status-pill-right {
   position: absolute;
   left: 192px;
-  top: calc(623px + var(--y-shift, 0px));
+  top: 623px;
   width: 174px;
   height: 73px;
   border-radius: 46px;
@@ -985,7 +991,7 @@ html, body {
 #screen-qtd-pessoas .fade-bottom-dark {
   position: absolute;
   left: 0;
-  top: 464px;
+  bottom: 0;
   width: 375px;
   height: 348px;
   background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 49%);
@@ -1341,7 +1347,7 @@ html, body {
 .btn-white-pill-next {
   position: absolute;
   left: 159px;
-  top: 591px;
+  bottom: 188px;
   width: 172px;
   height: 33px;
   border-radius: 46px;
@@ -1450,7 +1456,7 @@ html, body {
 #screen-o-que-entra .entra-fade-bottom {
   position: absolute;
   left: 0;
-  top: 485px;
+  bottom: 0;
   width: 375px;
   height: 327px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.92) 45%, #000000 70%);
@@ -1463,7 +1469,7 @@ html, body {
   left: 0;
   top: 0;
   width: 375px;
-  height: 812px;
+  height: 100%;
   overflow-y: auto;
   padding: 205px 0 275px;
   z-index: 18;
@@ -1533,7 +1539,7 @@ html, body {
 #screen-auth .auth-top-logo {
   position: absolute;
   left: 143px;
-  top: calc(72px + (var(--y-shift, 0px) * 0.45));
+  top: 72px;
   width: 88px;
   height: 88px;
   cursor: pointer;
@@ -1543,7 +1549,7 @@ html, body {
 #screen-auth .auth-wave-bg {
   position: absolute;
   left: 0;
-  top: calc(86px + (var(--y-shift, 0px) * 0.5));
+  top: 86px;
   width: 375px;
   height: 652px;
   pointer-events: none;
@@ -1557,7 +1563,7 @@ html, body {
 .auth-tabs-pill {
   position: absolute;
   left: 65px;
-  top: calc(238px + (var(--y-shift, 0px) * 0.65));
+  top: 238px;
   width: 245px;
   height: 30px;
   border-radius: 25px;
@@ -1604,7 +1610,7 @@ html, body {
 .auth-form-container {
   position: absolute;
   left: 65px;
-  top: calc(325px + (var(--y-shift, 0px) * 0.8));
+  top: 325px;
   width: 245px;
   z-index: 25;
 }
@@ -1712,8 +1718,8 @@ html, body {
   position: absolute;
   left: 0;
   top: 58px;
+  bottom: 112px;
   width: 375px;
-  height: 642px;
   overflow-y: auto;
   padding: 8px 12px 24px;
   z-index: 20;
@@ -2000,8 +2006,8 @@ html, body {
   position: absolute;
   left: 0;
   top: 58px;
+  bottom: 112px;
   width: 375px;
-  height: 642px;
   overflow-y: auto;
   padding: 10px 14px 24px;
   z-index: 20;
@@ -2377,4 +2383,243 @@ html, body {
 .app-toast.show {
   transform: translateX(-50%) translateY(0);
 }
+
+/* =====================================================
+   AJUSTE PROPORCIONAL AUTOMÁTICO PARA TELAS MOBILE COMPACTAS
+   (Ex: Safari iOS / Chrome Mobile com barras de endereço visíveis, ~640px a 780px)
+   Mantém 100% da proporção 1:1 (sem esticar) e evita sobreposição de elementos
+   ===================================================== */
+.phone-shell.compact-vh .top-logo {
+  top: 14px;
+}
+
+.phone-shell.compact-vh .top-menu-btn {
+  top: 23px;
+}
+
+.phone-shell.compact-vh .nav-circle-back,
+.phone-shell.compact-vh .nav-circle-home {
+  bottom: 12px;
+  width: 70px;
+  height: 70px;
+}
+
+.phone-shell.compact-vh .nav-circle-home {
+  left: 295px;
+}
+
+/* Seção 1: Iniciar */
+.phone-shell.compact-vh #screen-iniciar .bg-hero {
+  min-height: 100%;
+  object-position: center bottom;
+}
+
+.phone-shell.compact-vh #screen-iniciar .hero-title {
+  top: calc(108px + var(--extra) * 0.22);
+}
+
+.phone-shell.compact-vh #screen-iniciar .hero-subtitle {
+  top: calc(212px + var(--extra) * 0.26);
+}
+
+.phone-shell.compact-vh #screen-iniciar .btn-agora-mesmo {
+  top: calc(276px + var(--extra) * 0.32);
+}
+
+/* Seção 8: Login / Sign up */
+.phone-shell.compact-vh #screen-auth .auth-top-logo {
+  top: calc(36px + var(--extra) * 0.22);
+  width: 74px;
+  height: 74px;
+  left: 150.5px;
+}
+
+.phone-shell.compact-vh #screen-auth .auth-wave-bg {
+  top: calc(52px + var(--extra) * 0.22);
+}
+
+.phone-shell.compact-vh .auth-tabs-pill {
+  top: calc(174px + var(--extra) * 0.38);
+}
+
+.phone-shell.compact-vh .auth-form-container {
+  top: calc(230px + var(--extra) * 0.48);
+}
+
+.phone-shell.compact-vh .auth-field {
+  margin-bottom: 14px;
+}
+
+.phone-shell.compact-vh .remember-me-row {
+  bottom: 18px;
+}
+
+/* Seções 3 & 6: Pergunta 1 e Padrão de Entrega */
+.phone-shell.compact-vh .quiz-big-title {
+  top: calc(56px + var(--extra) * 0.35);
+  font-size: clamp(38px, calc(38px + var(--extra) * 0.06), 48.65px);
+  height: auto;
+}
+
+.phone-shell.compact-vh .quiz-sub-question {
+  top: calc(144px + var(--extra) * 0.54);
+}
+
+.phone-shell.compact-vh .quiz-card-backdrop {
+  top: calc(172px + var(--extra) * 0.6);
+  height: calc(230px + var(--extra) * 0.17);
+}
+
+.phone-shell.compact-vh .option-glass-card {
+  height: calc(103px + var(--extra) * 0.075);
+  padding: 18px 6px 8px;
+}
+
+.phone-shell.compact-vh .option-glass-card.row-1 {
+  top: calc(180px + var(--extra) * 0.61);
+}
+
+.phone-shell.compact-vh .option-glass-card.row-2 {
+  top: calc(291px + var(--extra) * 0.68);
+}
+
+.phone-shell.compact-vh .btn-next-bar {
+  top: calc(410px + var(--extra) * 0.77);
+  height: calc(60px + var(--extra) * 0.075);
+}
+
+.phone-shell.compact-vh .btn-next-bar .next-bar-label {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.phone-shell.compact-vh .btn-next-bar .next-bar-circle {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  left: 306px;
+}
+
+.phone-shell.compact-vh .status-pill-left,
+.phone-shell.compact-vh .status-pill-right {
+  top: calc(478px + var(--extra) * 0.84);
+  height: calc(60px + var(--extra) * 0.075);
+}
+
+.phone-shell.compact-vh .status-pill-left .rem-number,
+.phone-shell.compact-vh .status-pill-right .pts-value {
+  font-size: 27px;
+  top: 5px;
+}
+
+.phone-shell.compact-vh .status-pill-right .pts-sparkle {
+  top: 14px;
+}
+
+.phone-shell.compact-vh .status-pill-left .rem-label,
+.phone-shell.compact-vh .status-pill-right .pts-label {
+  top: 38px;
+}
+
+/* Seção 4: Localização */
+.phone-shell.compact-vh #screen-localizacao .loc-bg-photo {
+  min-height: 100%;
+}
+
+.phone-shell.compact-vh #screen-localizacao .loc-glass-curve {
+  height: calc(385px + var(--extra) * 0.4);
+  -webkit-mask-size: 375px 100%;
+  mask-size: 375px 100%;
+}
+
+.phone-shell.compact-vh #screen-localizacao .loc-title {
+  bottom: calc(236px + var(--extra) * 0.26);
+}
+
+.phone-shell.compact-vh #screen-localizacao .loc-subtitle {
+  bottom: calc(213px + var(--extra) * 0.26);
+}
+
+.phone-shell.compact-vh .loc-input-wrap {
+  bottom: calc(166px + var(--extra) * 0.22);
+}
+
+.phone-shell.compact-vh .loc-emerging-next {
+  bottom: calc(104px + var(--extra) * 0.18);
+}
+
+/* Seção 5: Quantidade de Pessoas + Calendário */
+.phone-shell.compact-vh #screen-qtd-pessoas .qtd-title {
+  top: calc(68px + var(--extra) * 0.25);
+}
+
+.phone-shell.compact-vh #screen-qtd-pessoas .orbital-arc {
+  top: calc(44px + var(--extra) * 0.34);
+}
+
+.phone-shell.compact-vh #screen-qtd-pessoas .fade-top-dark {
+  height: calc(185px + var(--extra) * 0.35);
+}
+
+.phone-shell.compact-vh #screen-qtd-pessoas .fade-bottom-dark {
+  height: calc(245px + var(--extra) * 0.55);
+}
+
+.phone-shell.compact-vh .pax-pill-box {
+  top: calc(284px + var(--extra) * 0.34);
+}
+
+.phone-shell.compact-vh .pax-chevron-indicator.up {
+  top: calc(294px + var(--extra) * 0.34);
+}
+
+.phone-shell.compact-vh .pax-chevron-indicator.down {
+  top: calc(311px + var(--extra) * 0.34);
+}
+
+.phone-shell.compact-vh .quantos-dias-card {
+  top: calc(228px + var(--extra) * 0.34);
+}
+
+.phone-shell.compact-vh .quantos-dias-card.expanded {
+  top: calc(188px + var(--extra) * 0.31);
+}
+
+.phone-shell.compact-vh #screen-qtd-pessoas .btn-white-pill-next {
+  bottom: calc(114px + var(--extra) * 0.42);
+}
+
+/* Seção 7: O que entra na conta? */
+.phone-shell.compact-vh #screen-o-que-entra .entra-header {
+  top: calc(62px + var(--extra) * 0.18);
+}
+
+.phone-shell.compact-vh #screen-o-que-entra .entra-fade-top {
+  height: calc(195px + var(--extra) * 0.4);
+}
+
+.phone-shell.compact-vh #screen-o-que-entra .entra-fade-bottom {
+  height: calc(235px + var(--extra) * 0.5);
+}
+
+.phone-shell.compact-vh .entra-list-scroll {
+  padding: calc(165px + var(--extra) * 0.22) 0 calc(210px + var(--extra) * 0.35);
+}
+
+.phone-shell.compact-vh #screen-o-que-entra .btn-white-pill-next {
+  bottom: calc(106px + var(--extra) * 0.4);
+}
+
+/* Seções 9 & 10: Resultado e Pagamento + Modal Excel */
+.phone-shell.compact-vh .resultado-scroll-container,
+.phone-shell.compact-vh .pagamento-scroll {
+  top: 52px;
+  bottom: 92px;
+}
+
+.phone-shell.compact-vh .excel-modal-sheet {
+  height: calc(var(--app-height) - 36px);
+}
+
 
