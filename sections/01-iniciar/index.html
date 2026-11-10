@@ -1,0 +1,637 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>RSTCOM — Quanto custa seu próximo evento?</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+</head>
+<body>
+
+  <!-- Barra superior de navegação rápida (visível no Desktop para testar cada seção facilmente) -->
+  <nav class="preview-toolbar" aria-label="Navegação rápida entre seções">
+    <span class="toolbar-label">SEÇÕES:</span>
+    <button type="button" class="active" data-screen="screen-iniciar">1. Iniciar</button>
+    <button type="button" data-screen="screen-menu">2. Menu</button>
+    <button type="button" data-screen="screen-pergunta-1">3. Formato</button>
+    <button type="button" data-screen="screen-localizacao">4. Localização</button>
+    <button type="button" data-screen="screen-qtd-pessoas">5. Pessoas & Dias</button>
+    <button type="button" data-screen="screen-padrao-entrega">6. Padrão</button>
+    <button type="button" data-screen="screen-o-que-entra">7. O que entra</button>
+    <button type="button" data-screen="screen-auth">8. Login / Sign up</button>
+    <button type="button" data-screen="screen-resultado">9. Estimativa (Final 1)</button>
+    <button type="button" data-screen="screen-pagamento">10. Pagamento & Excel (Final 2)</button>
+  </nav>
+
+  <!-- Container Mobile (375x812 fiel ao Figma) -->
+  <main class="phone-shell">
+
+    <!-- Toast de feedback -->
+    <div id="app-toast" class="app-toast"></div>
+
+    <!-- ===================================================================
+         SEÇÃO 1: INICIAR (#9190:29)
+         =================================================================== -->
+    <section id="screen-iniciar" class="screen active" aria-label="Seção iniciar">
+      <img src="../../assets/images/bg_iniciar.png" alt="Background RSTCOM" class="bg-hero" />
+
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <h1 class="hero-title">
+        <span class="strong-black">Quanto custa</span>
+        seu próximo<br />evento?
+      </h1>
+
+      <p class="hero-subtitle">
+        Tenha uma faixa de investimento para levar à diretoria antes do briefing fechado em 7 perguntas.
+      </p>
+
+      <button type="button" id="btn-agora-mesmo" class="btn-agora-mesmo animate-float">
+        <img src="../../assets/images/card_bg_evento.png" alt="" class="orb-avatar" />
+        <span class="btn-text">Agora mesmo</span>
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 2: MENU (#9190:52)
+         =================================================================== -->
+    <section id="screen-menu" class="screen" aria-label="Menu de navegação">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="menu-logo-center" data-action="go-back" />
+      <div class="menu-line-top"></div>
+
+      <button type="button" class="menu-item-row" style="top: 110px;" data-menu-target="screen-iniciar">
+        <img src="../../assets/icons/icon_para_voce.svg" alt="" class="menu-icon-left" />
+        <span class="menu-text medium" style="left: 69px;">Para você</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <button type="button" class="menu-item-row" style="top: 147px;" data-menu-target="screen-iniciar">
+        <span class="menu-text light" style="left: 28px;">Sobre</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <button type="button" class="menu-item-row" style="top: 184px;" data-menu-target="screen-pergunta-1">
+        <span class="menu-text light" style="left: 28px;">Iniciar questionário</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <button type="button" class="menu-item-row" style="top: 221px;" data-menu-target="screen-resultado">
+        <span class="menu-text medium" style="left: 28px;">Meus formulários</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <div class="menu-line-mid"></div>
+
+      <button type="button" class="menu-item-row" style="top: 293px;" data-menu-target="screen-auth">
+        <img src="../../assets/icons/icon_minha_conta.svg" alt="" class="menu-icon-left" />
+        <span class="menu-text light" style="left: 69px;">Minha conta</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <button type="button" class="menu-item-row" style="top: 330px;" data-menu-target="screen-pagamento">
+        <img src="../../assets/icons/icon_contato.svg" alt="" class="menu-icon-left" />
+        <span class="menu-text light" style="left: 69px;">Contato</span>
+        <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+      </button>
+
+      <div class="menu-line-bottom"></div>
+
+      <div class="brasil-footer">
+        <img src="../../assets/images/bandeira_brasil.png" alt="Brasil" />
+        <span>Brasil</span>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 3: PERGUNTA 1 — FORMATO DO EVENTO (#9199:136)
+         =================================================================== -->
+    <section id="screen-pergunta-1" class="screen screen-light-quiz" aria-label="Pergunta 1: Qual o formato do evento?">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <h2 class="quiz-big-title">Tudo bem,<br />bem vindo!</h2>
+      <p class="quiz-sub-question">Qual o formato do evento?</p>
+
+      <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+      <!-- 6 Opções em Grid (2 linhas x 3 colunas) exatas do Figma -->
+      <div class="option-glass-card" style="left: 23px; top: 286px; width: 105px;" data-format="Convencao de vendas">
+        <div class="opt-title">Convenção<br />de vendas</div>
+        <div class="opt-desc">Kickoff, alinhamento e reconhecimento do time</div>
+      </div>
+
+      <div class="option-glass-card selected" style="left: 135px; top: 286px; width: 106px;" data-format="Lancamento de produto">
+        <div class="opt-title">Lançamento<br />de produto</div>
+        <div class="opt-desc">Imprensa, canais, clientes e parceiros</div>
+      </div>
+
+      <div class="option-glass-card" style="left: 248px; top: 286px; width: 105px;" data-format="Evento Institucional">
+        <div class="opt-title">Evento<br />Institucional</div>
+        <div class="opt-desc">Premiação, aniversário, encontro de liderança</div>
+      </div>
+
+      <div class="option-glass-card" style="left: 23px; top: 408px; width: 105px;" data-format="Ativacao de marca">
+        <div class="opt-title">Ativação de<br />marca</div>
+        <div class="opt-desc">Experiência em shopping, rua, festival ou evento</div>
+      </div>
+
+      <div class="option-glass-card" style="left: 135px; top: 408px; width: 106px;" data-format="Congresso">
+        <div class="opt-title" style="margin-bottom: 14px;">Congresso</div>
+        <div class="opt-desc">Programação científica ou técnica, salas e palestrantes</div>
+      </div>
+
+      <div class="option-glass-card" style="left: 248px; top: 408px; width: 105px;" data-format="Feira e estande">
+        <div class="opt-title" style="margin-bottom: 14px;">Feira e estande</div>
+        <div class="opt-desc">Participação com estande em pavilhão</div>
+      </div>
+
+      <!-- Barra Seguir próxima pergunta -->
+      <button type="button" id="btn-next-p1" class="btn-next-bar">
+        <span class="next-bar-label">Seguir próxima pergunta</span>
+        <span class="next-bar-circle">
+          <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+        </span>
+      </button>
+
+      <!-- Cards inferiores de status -->
+      <div class="status-pill-left">
+        <div class="rem-number">05</div>
+        <div class="rem-label">Perguntas restantes</div>
+      </div>
+
+      <div class="status-pill-right">
+        <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+        <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+        <div id="pts-p1" class="pts-value">100 <small>pts</small></div>
+        <div class="pts-label">Conquistados</div>
+      </div>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 4: LOCALIZAÇÃO — ONDE SERÁ O EVENTO? (#9215:244)
+         =================================================================== -->
+    <section id="screen-localizacao" class="screen" aria-label="Onde será o evento?">
+      <img src="../../assets/images/bg_localizacao_mapa.png" alt="Localização" class="loc-bg-photo" />
+
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <!-- Overlay curvo em vidro fosco idêntico ao Figma (#9215:289) -->
+      <div class="loc-glass-curve"></div>
+
+      <!-- Textos e Linha nas coordenadas exatas do Figma (#9215:294, #9215:296, #9215:295) -->
+      <h2 class="loc-title">Onde será o evento?</h2>
+      <p class="loc-subtitle">Escreva o local e selecione a partir do maps</p>
+
+      <!-- Linha de input exata do Figma (x: 57, y: 603, w: 261) -->
+      <div class="loc-input-wrap">
+        <input
+          type="text"
+          id="loc-input"
+          class="loc-input"
+          placeholder=""
+          autocomplete="off"
+        />
+        <span id="loc-confirmed-check" class="loc-confirmed-check" title="Endereço confirmado">✓</span>
+
+        <!-- Lista limpa de endereços reais do Maps que aparece ao digitar -->
+        <div id="loc-autocomplete-list" class="loc-autocomplete-list"></div>
+      </div>
+
+      <!-- Botão branco (padrão Figma #9216:378) que surge somente após selecionar o endereço da lista -->
+      <button type="button" id="loc-next-btn" class="btn-white-pill-next loc-emerging-next">
+        <span class="pill-label">Seguir próxima pergunta</span>
+        <span class="pill-circle">
+          <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Seguir" />
+        </span>
+      </button>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 5: QUANTIDADE DE PESSOAS + CALENDÁRIO DINÂMICO (#9211:63)
+         =================================================================== -->
+    <section id="screen-qtd-pessoas" class="screen" aria-label="Quantas pessoas vão participar?">
+      <!-- Roleta Orbital Infinita (360° completa, centro exato em 265,265) -->
+      <div id="roulette-touch-zone" class="roulette-touch-zone" title="Arraste ou gire a roleta para escolher a quantidade de pessoas">
+        <svg id="orbital-arc" class="orbital-arc" width="538" height="530" viewBox="0 0 538 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="265" cy="265" r="264.5" stroke="white" stroke-opacity="0.85" />
+          <g id="roulette-beads"></g>
+        </svg>
+      </div>
+
+      <!-- Gradientes de fade superior e inferior idênticos ao Figma (#9214:137 e #9214:136) -->
+      <div class="fade-top-dark"></div>
+      <div class="fade-bottom-dark"></div>
+
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <h2 class="qtd-title">
+        <strong>Quantas</strong> pessoas<br />vão <u>participar</u>?
+      </h2>
+
+      <!-- Display de Participantes (não clicável, controlado pela roleta infinita) -->
+      <div class="pax-pill-box">
+        <span id="pax-value-text" class="pax-value-text">500 pax</span>
+      </div>
+
+      <!-- Indicadores visuais de rotação ao lado do pill (posições exatas do Figma: x=194, y=352 e y=369) -->
+      <img src="../../assets/icons/icon_chevron_up.svg" alt="" class="pax-chevron-indicator up" />
+      <img src="../../assets/icons/icon_chevron_down.svg" alt="" class="pax-chevron-indicator down" />
+
+      <!-- Card Branco Lateral "Quantos dias?" (#9215:238) com Calendário em 4 Etapas -->
+      <aside id="quantos-dias-card" class="quantos-dias-card" aria-label="Calendário de dias do evento">
+        <div class="qd-header-title">Quantos dias?</div>
+        <p class="qd-header-sub">
+          Prazos curtos reduzem as opções de fornecedores e aumentam o custo.
+        </p>
+        <div class="qd-steps-bar">
+          <span class="qd-step-dot active"></span>
+          <span class="qd-step-dot"></span>
+          <span class="qd-step-dot"></span>
+        </div>
+        <div id="qd-dynamic-body"></div>
+      </aside>
+
+      <!-- Botão Seguir próxima pergunta -->
+      <button type="button" id="btn-next-qtd" class="btn-white-pill-next">
+        <span class="pill-label">Seguir próxima pergunta</span>
+        <span class="pill-circle">
+          <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+        </span>
+      </button>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 6: PADRÃO DE ENTREGA (#9215:297)
+         =================================================================== -->
+    <section id="screen-padrao-entrega" class="screen screen-light-quiz" aria-label="Qual é o padrão de entrega?">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <h2 class="quiz-big-title">Padrão de<br />entrega</h2>
+      <p class="quiz-sub-question">Qual é o padrão de entrega?</p>
+
+      <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+      <!-- 4 Opções em Grid (2x2) exatas do Figma -->
+      <div class="option-glass-card large-opt" style="left: 23px; top: 286px; width: 159px;" data-padrao="Essencial">
+        <div class="opt-title">Essencial</div>
+        <div class="opt-desc">Funcional e bem executado, sem grandes efeitos</div>
+      </div>
+
+      <div class="option-glass-card large-opt" style="left: 193px; top: 286px; width: 161px;" data-padrao="Corporativo">
+        <div class="opt-title">Corporativo</div>
+        <div class="opt-desc">Boa produção, cenografia e conteúdo próprios</div>
+      </div>
+
+      <div class="option-glass-card large-opt selected" style="left: 23px; top: 408px; width: 159px;" data-padrao="Premium">
+        <div class="opt-title">Premium</div>
+        <div class="opt-desc">Experiência de alto impacto visual</div>
+      </div>
+
+      <div class="option-glass-card large-opt" style="left: 193px; top: 408px; width: 161px;" data-padrao="Iconico">
+        <div class="opt-title">Icônico</div>
+        <div class="opt-desc">Projeto autoral, grandes atrações, referência de mercado</div>
+      </div>
+
+      <!-- Barra Seguir próxima pergunta -->
+      <button type="button" id="btn-next-padrao" class="btn-next-bar">
+        <span class="next-bar-label">Seguir próxima pergunta</span>
+        <span class="next-bar-circle">
+          <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+        </span>
+      </button>
+
+      <!-- Cards inferiores de status -->
+      <div class="status-pill-left">
+        <div class="rem-number">01</div>
+        <div class="rem-label">Perguntas restantes</div>
+      </div>
+
+      <div class="status-pill-right">
+        <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+        <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+        <div id="pts-padrao" class="pts-value">450 <small>pts</small></div>
+        <div class="pts-label">Acomulados</div>
+      </div>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 7: O QUE ENTRA NA CONTA? (#9216:347)
+         =================================================================== -->
+    <section id="screen-o-que-entra" class="screen" aria-label="O que entra na conta?">
+      <div class="timeline-vertical-line"></div>
+
+      <!-- Lista interativa (clique alterna Bold/Black sem limite de seleção) -->
+      <div id="entra-list-scroll" class="entra-list-scroll"></div>
+
+      <!-- Gradientes superior e inferior idênticos ao Figma (#9216:366 e #9216:365) -->
+      <div class="entra-fade-top"></div>
+      <div class="entra-fade-bottom"></div>
+
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="entra-header">
+        <h2 class="entra-title">O que entra na conta?</h2>
+        <p class="entra-sub">Marcamos o mais comum para este formato. Ajuste como preferir.</p>
+      </div>
+
+      <!-- Botão Ver minha estimativa -->
+      <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label" style="left: 102px; top: 659px;">
+        <span class="pill-label">Ver minha estimativa</span>
+        <span class="pill-circle">
+          <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Ver" />
+        </span>
+      </button>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 8: LOGIN (#9205:10) & SIGN UP (#9202:203)
+         =================================================================== -->
+    <section id="screen-auth" class="screen" aria-label="Login e Cadastro">
+      <img src="../../assets/icons/logo_large_black.svg" alt="Logo RSTCOM" class="auth-top-logo" data-action="go-home" />
+      <img src="../../assets/icons/shape_login_bg.svg" alt="" class="auth-wave-bg" />
+
+      <div class="auth-tabs-pill">
+        <div class="auth-tab-indicator"></div>
+        <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
+        <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
+      </div>
+
+      <div id="auth-form-container" class="auth-form-container"></div>
+
+      <div id="remember-me-row" class="remember-me-row">
+        <span>Remember me</span>
+        <button type="button" id="toggle-remember-btn" class="figma-toggle-btn active" aria-label="Remember me">
+          <span class="knob"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 9: TELA FINAL 1 — RESULTADO DA ESTIMATIVA (#9216:509)
+         =================================================================== -->
+    <section id="screen-resultado" class="screen" aria-label="Resultado da Estimativa">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="resultado-scroll-container">
+        <!-- Card Principal com a Faixa de Investimento -->
+        <div class="res-hero-card">
+          <div class="res-hero-top-row">
+            <span id="res-user-tag" class="res-tag-orange">ARTHUR, SUA ESTIMATIVA</span>
+            <span id="res-format-tag" class="res-tag-format">LANÇAMENTO DE PRODUTO</span>
+          </div>
+
+          <div class="res-label-custo">SEU EVENTO PODE CUSTAR DE</div>
+          <div id="res-price-min" class="res-price-big">R$ 7,1 mi</div>
+          <div class="res-price-sep">A</div>
+          <div id="res-price-max" class="res-price-big">R$ 12,65 mi</div>
+
+          <div id="res-per-pax" class="res-per-pax">
+            Por participante: R$ 4.589 a R$ 8.143
+          </div>
+
+          <div id="res-summary-pills" class="res-summary-pills"></div>
+        </div>
+
+        <!-- Card "Onde o dinheiro vai" -->
+        <div class="res-section-card">
+          <h3 class="res-card-title">Onde o dinheiro vai</h3>
+          <div id="res-bars-container"></div>
+          <p class="res-footnote">
+            Participação nos custos diretos, antes de honorários, contingência e impostos.
+          </p>
+        </div>
+
+        <!-- Card "[ PLANILHA COMPLETA ]" -->
+        <div class="res-paywall-card">
+          <div class="paywall-tag">[ PLANILHA COMPLETA ]</div>
+          <h3 class="paywall-title">Veja item a item o que compõe esse valor</h3>
+
+          <div class="paywall-blurred-preview">
+            <div>Locação do espaço principal  1 × R$ 180.000</div>
+            <div>Diária de montagem e desmontagem  2 × R$ 45.000</div>
+            <div>Salas de apoio e camarins  3 × R$ 18.500</div>
+            <div>ECAD e direitos de execução  1 × R$ 12.750</div>
+          </div>
+
+          <ul class="paywall-checklist">
+            <li><span class="check-icon">✓</span> <span>47 itens com quantidade e valores mínimo e máximo</span></li>
+            <li><span class="check-icon">✓</span> <span>Fórmulas abertas, edite como quiser</span></li>
+            <li><span class="check-icon">✓</span> <span>Resumo por categoria para a diretoria</span></li>
+          </ul>
+
+          <div class="paywall-price">R$ 49,90</div>
+          <div class="paywall-price-sub">Pagamento único • Excel .xlsx</div>
+
+          <button type="button" id="btn-ir-pagamento" class="btn-simular-pagamento">
+            Simular pagamento e liberar
+          </button>
+        </div>
+      </div>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 10: TELA FINAL 2 — PAGAMENTO E POP-UP EXCEL DETALHADO
+         =================================================================== -->
+    <section id="screen-pagamento" class="screen" aria-label="Informações de pagamento e liberação da planilha">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="pagamento-scroll">
+        <div class="pay-header-card">
+          <span class="badge">LIBERAÇÃO IMEDIATA • EXCEL ABERTO</span>
+          <h2>Finalizar e abrir planilha</h2>
+          <p>Insira os dados abaixo para liberar o detalhamento completo de custos e receber no e-mail.</p>
+        </div>
+
+        <div class="pay-method-tabs">
+          <button type="button" class="pay-method-tab active" data-pay-method="cartao">💳 Cartão</button>
+          <button type="button" class="pay-method-tab" data-pay-method="pix">⚡ PIX (Instantâneo)</button>
+        </div>
+
+        <div class="pay-form-card">
+          <button type="button" id="btn-autofill-demo" class="btn-autofill-demo">
+            ✨ Preencher dados de simulação com 1 clique
+          </button>
+
+          <div class="pay-input-group">
+            <label for="pay-name">Nome ou Empresa</label>
+            <input type="text" id="pay-name" placeholder="Ex: Arthur - Diretoria de Marketing" value="Arthur" />
+          </div>
+
+          <div class="pay-input-group">
+            <label for="pay-email">E-mail para receber a planilha e resumo</label>
+            <input type="email" id="pay-email" placeholder="seuemail@empresa.com.br" value="arthur@rstcom.com.br" />
+          </div>
+
+          <div id="pay-card-fields">
+            <div class="pay-input-group">
+              <label for="pay-card-number">Número do Cartão (Simulação)</label>
+              <input type="text" id="pay-card-number" placeholder="0000 0000 0000 0000" value="4532 •••• •••• 8890" />
+            </div>
+
+            <div class="pay-row-2col">
+              <div class="pay-input-group">
+                <label for="pay-card-exp">Validade</label>
+                <input type="text" id="pay-card-exp" placeholder="MM/AA" value="08/29" />
+              </div>
+              <div class="pay-input-group">
+                <label for="pay-card-cvv">CVV</label>
+                <input type="text" id="pay-card-cvv" placeholder="123" value="742" />
+              </div>
+            </div>
+          </div>
+
+          <div id="pay-pix-fields" style="display: none; text-align: center; padding: 10px 0 14px;">
+            <div style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
+              [ QR CODE PIX SIMULADO • R$ 49,90 ]
+            </div>
+            <p style="font-size: 9.5px; color: rgba(255,255,255,0.7);">
+              Clique no botão abaixo para simular a confirmação imediata do PIX.
+            </p>
+          </div>
+
+          <button type="button" id="btn-confirmar-pagamento" class="btn-confirmar-pagamento">
+            Confirmar R$ 49,90 e abrir Excel agora →
+          </button>
+        </div>
+      </div>
+
+      <!-- POP-UP MODAL DA PLANILHA EXCEL MOSTRANDO O QUE CADA COISA CUSTOU -->
+      <div id="excel-modal-backdrop" class="excel-modal-backdrop" role="dialog" aria-label="Planilha Excel de Custos">
+        <div class="excel-modal-sheet">
+          <div class="excel-topbar">
+            <div class="excel-file-title">
+              <div class="excel-badge-icon">X</div>
+              <div>
+                <h3>Orcamento_Aberto_RSTCOM.xlsx</h3>
+                <small>Fórmulas abertas • Edite a coluna Qtd para recalcular</small>
+              </div>
+            </div>
+            <button type="button" id="excel-close-btn" class="excel-close-btn" aria-label="Fechar planilha">✕</button>
+          </div>
+
+          <div class="excel-formula-bar">
+            <span class="excel-fx">fx</span>
+            <span>=SOMA(SUBTOTAL_MIN:SUBTOTAL_MAX) • Valores em Reais (R$)</span>
+          </div>
+
+          <div class="excel-table-wrap">
+            <table class="excel-table">
+              <thead>
+                <tr>
+                  <th>Item de Custo</th>
+                  <th>Unid.</th>
+                  <th>Qtd</th>
+                  <th>Mínimo</th>
+                  <th>Máximo</th>
+                </tr>
+              </thead>
+              <tbody id="excel-table-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="excel-footer-actions">
+            <div class="excel-totals-strip">
+              <span>TOTAL ESTIMADO DA PLANILHA:</span>
+              <span><span id="excel-total-min">R$ 7,1 mi</span> a <span id="excel-total-max">R$ 12,65 mi</span></span>
+            </div>
+            <div class="excel-btns-row">
+              <button type="button" id="btn-download-csv" class="btn-download-csv">
+                📥 Baixar Planilha Excel (.csv)
+              </button>
+              <button type="button" id="btn-send-email" class="btn-send-email">
+                ✉️ Enviar por E-mail
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navegação inferior -->
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+  </main>
+
+  <script src="../../js/calculator.js"></script>
+  <script src="../../js/app.js"></script>
+<script>window.addEventListener('DOMContentLoaded', () => { if (window.navigateTo) window.navigateTo('screen-iniciar', false); });</script></body>
+</html>
+
+
