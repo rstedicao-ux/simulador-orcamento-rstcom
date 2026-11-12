@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" id="meta-theme-color" content="#D8D8D8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -10,6 +12,7 @@
   <link rel="stylesheet" href="../../css/styles.css" />
   <link rel="stylesheet" href="../../css/animations.css" />
 </head>
+
 <body>
 
   <!-- Container Principal Full-Screen (Mobile no Celular / Widescreen no PC) -->
@@ -22,7 +25,9 @@
          SEÇÃO 1: INICIAR (#9190:29)
          =================================================================== -->
     <section id="screen-iniciar" class="screen active" aria-label="Seção iniciar">
-      <img src="../../assets/images/bg_iniciar.png" alt="Background RSTCOM" class="bg-hero" />
+      <img src="../../assets/images/bg_iniciar.png" alt="Background RSTCOM Mobile" class="bg-hero bg-hero-mobile" />
+      <img src="../../assets/images/bg_iniciar_desktop.png" alt="Background RSTCOM Desktop" class="bg-hero bg-hero-desktop" />
+      <div class="iniciar-readability-overlay"></div>
 
       <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
       <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
@@ -209,13 +214,7 @@
         <p class="loc-subtitle">Escreva o local e selecione a partir do maps</p>
 
         <div class="loc-input-wrap">
-          <input
-            type="text"
-            id="loc-input"
-            class="loc-input"
-            placeholder=""
-            autocomplete="off"
-          />
+          <input type="text" id="loc-input" class="loc-input" placeholder="" autocomplete="off" />
           <span id="loc-confirmed-check" class="loc-confirmed-check" title="Endereço confirmado">✓</span>
 
           <!-- Lista limpa de endereços reais do Maps que aparece ao digitar -->
@@ -245,8 +244,10 @@
          =================================================================== -->
     <section id="screen-qtd-pessoas" class="screen" aria-label="Quantas pessoas vão participar?">
       <!-- Roleta Orbital Infinita (360° completa, centro exato em 265,265) -->
-      <div id="roulette-touch-zone" class="roulette-touch-zone" title="Arraste ou gire a roleta para escolher a quantidade de pessoas">
-        <svg id="orbital-arc" class="orbital-arc" width="538" height="530" viewBox="0 0 538 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div id="roulette-touch-zone" class="roulette-touch-zone"
+        title="Arraste ou gire a roleta para escolher a quantidade de pessoas">
+        <svg id="orbital-arc" class="orbital-arc" width="538" height="530" viewBox="0 0 538 530" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
           <circle cx="265" cy="265" r="264.5" stroke="white" stroke-opacity="0.85" />
           <g id="roulette-beads"></g>
         </svg>
@@ -430,15 +431,16 @@
     <section id="screen-auth" class="screen" aria-label="Login e Cadastro">
       <div class="auth-stage">
         <img src="../../assets/icons/logo_large_black.svg" alt="Logo RSTCOM" class="auth-top-logo" data-action="go-home" />
-        <img src="../../assets/icons/shape_login_bg.svg" alt="" class="auth-wave-bg" />
 
-        <div class="auth-tabs-pill">
-          <div class="auth-tab-indicator"></div>
-          <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
-          <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
+        <div class="auth-wave-card">
+          <div class="auth-tabs-pill">
+            <div class="auth-tab-indicator"></div>
+            <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
+            <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
+          </div>
+
+          <div id="auth-form-container" class="auth-form-container"></div>
         </div>
-
-        <div id="auth-form-container" class="auth-form-container"></div>
 
         <div id="remember-me-row" class="remember-me-row">
           <span>Remember me</span>
@@ -495,14 +497,15 @@
               <h3 class="paywall-title">Veja item a item o que compõe esse valor</h3>
 
               <div class="paywall-blurred-preview">
-                <div>Locação do espaço principal  1 × R$ 180.000</div>
-                <div>Diária de montagem e desmontagem  2 × R$ 45.000</div>
-                <div>Salas de apoio e camarins  3 × R$ 18.500</div>
-                <div>ECAD e direitos de execução  1 × R$ 12.750</div>
+                <div>Locação do espaço principal 1 × R$ 180.000</div>
+                <div>Diária de montagem e desmontagem 2 × R$ 45.000</div>
+                <div>Salas de apoio e camarins 3 × R$ 18.500</div>
+                <div>ECAD e direitos de execução 1 × R$ 12.750</div>
               </div>
 
               <ul class="paywall-checklist">
-                <li><span class="check-icon">✓</span> <span>47 itens com quantidade e valores mínimo e máximo</span></li>
+                <li><span class="check-icon">✓</span> <span>47 itens com quantidade e valores mínimo e máximo</span>
+                </li>
                 <li><span class="check-icon">✓</span> <span>Fórmulas abertas, edite como quiser</span></li>
                 <li><span class="check-icon">✓</span> <span>Resumo por categoria para a diretoria</span></li>
               </ul>
@@ -583,7 +586,8 @@
             </div>
 
             <div id="pay-pix-fields" style="display: none; text-align: center; padding: 10px 0 14px;">
-              <div style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
+              <div
+                style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
                 [ QR CODE PIX SIMULADO • R$ 49,90 ]
               </div>
               <p style="font-size: 9.5px; color: rgba(255,255,255,0.7);">
@@ -663,6 +667,6 @@
   <script src="../../js/calculator.js"></script>
   <script src="../../js/app.js"></script>
 </body>
-</html>
 
+</html>
 <script>window.addEventListener('DOMContentLoaded', () => { if(window.navigateTo) window.navigateTo('screen-pergunta-1', false); });</script>
