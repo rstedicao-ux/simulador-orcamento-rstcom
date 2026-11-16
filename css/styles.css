@@ -3040,3 +3040,856 @@ html, body {
     font-size: 12px;
   }
 }
+
+/* =====================================================
+   NOVOS COMPONENTES SIMPLIFICADOS (ESCRITA + BOTÕES CLICÁVEIS + HOVER)
+   E ESTILOS DAS 9 NOVAS TELAS + PLANILHA EXCEL OFICIAL DE 2 ABAS
+   ===================================================== */
+
+/* Selo sinalizador de clique */
+.click-hint-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(4, 37, 103, 0.1);
+  border: 1px solid rgba(4, 37, 103, 0.25);
+  color: var(--primary-navy);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.fast-track-shortcut-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-navy);
+  color: #FFFFFF;
+  border: 1px solid var(--accent-cyan);
+  font-family: var(--font-inter);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+  margin-top: 6px;
+  box-shadow: 0 4px 14px rgba(4, 37, 103, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.fast-track-shortcut-btn:hover {
+  transform: translateY(-1px);
+  background: var(--accent-blue);
+}
+
+/* Indicador de clique e ícone sólido nos cards de vidro */
+.option-glass-card {
+  font-family: var(--font-inter);
+}
+
+.option-glass-card .opt-check-dot {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.option-glass-card.selected .opt-check-dot {
+  background: #00F5FE;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 8px rgba(0, 245, 254, 0.8);
+}
+
+.option-glass-card.selected .opt-check-dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #042567;
+}
+
+.solid-opt-icon {
+  width: 20px;
+  height: 20px;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  opacity: 0.92;
+  flex-shrink: 0;
+}
+
+.option-glass-card.selected .solid-opt-icon {
+  color: #00F5FE;
+}
+
+/* Stage com campo de escrita integrado */
+.quiz-options-stage.with-input {
+  max-height: 315px;
+}
+
+.stage-inner-stack {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-options-grid.compact-cards {
+  flex: 1;
+  min-height: 0;
+}
+
+.glass-write-box {
+  background: rgba(4, 18, 54, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 22px;
+  padding: 7px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.glass-write-box label {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #00F5FE;
+}
+
+.glass-write-box input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  color: #FFFFFF;
+  font-family: var(--font-inter);
+  font-size: 12px;
+  padding: 2px 0 3px;
+  outline: none;
+}
+
+.glass-write-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botões de modalidade e cidades rápidas na tela de Localização */
+.loc-mode-pills {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.loc-mode-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  color: #FFFFFF;
+  border-radius: 99px;
+  padding: 6px 13px;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loc-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.loc-mode-btn.active {
+  background: #FFFFFF;
+  color: #042567;
+  border-color: #00F5FE;
+  font-weight: 800;
+}
+
+.loc-quick-cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.loc-quick-chip {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 99px;
+  padding: 4px 10px;
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loc-quick-chip:hover {
+  background: rgba(0, 245, 254, 0.22);
+  border-color: #00F5FE;
+  color: #FFFFFF;
+}
+
+/* =====================================================
+   TELAS ESCURAS DE QUESTIONÁRIO (.screen-dark-quiz & #screen-qtd-pessoas)
+   ===================================================== */
+.screen-dark-quiz,
+#screen-qtd-pessoas,
+#screen-o-que-entra {
+  background: linear-gradient(180deg, #0D0E14 0%, #050508 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passive-bg-arc {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.dark-quiz-container {
+  position: relative;
+  z-index: 25;
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  padding:
+    max(56px, calc(env(safe-area-inset-top, 16px) + 44px))
+    14px
+    max(90px, calc(env(safe-area-inset-bottom, 14px) + 78px));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dark-quiz-header {
+  text-align: left;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.dark-big-title {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: clamp(22px, 3.6dvh, 30px);
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.dark-big-title strong {
+  font-weight: 800;
+}
+
+.dark-big-title u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dark-sub-text {
+  margin-top: 4px;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Painéis de Público, Dias e Prazo simplificados (sem roldana) */
+.qtd-simplified-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.qtd-simplified-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.dark-glass-panel {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  padding: 11px 14px;
+}
+
+.panel-label {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+.panel-helper {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 8px;
+}
+
+.direct-number-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.direct-number-input {
+  width: 130px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.55);
+  color: #FFFFFF;
+  font-family: var(--font-montserrat);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+
+.direct-number-input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(0, 245, 254, 0.35);
+}
+
+.unit-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.quick-click-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.click-chip {
+  flex: 1;
+  min-width: 52px;
+  height: 30px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.click-chip:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.click-chip.active {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #00F5FE;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(0, 245, 254, 0.3);
+}
+
+/* Grid de botões de múltipla escolha com hover e check sólido */
+.multi-click-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 2px;
+  scrollbar-width: none;
+  align-content: center;
+}
+
+.multi-click-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.dark-choice-btn {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 9px 12px;
+  text-align: left;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: var(--font-inter);
+  transition: all 0.2s ease;
+}
+
+.dark-choice-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 245, 254, 0.55);
+  transform: translateX(3px);
+}
+
+.dark-choice-btn.selected {
+  background: linear-gradient(135deg, rgba(4, 37, 103, 0.72) 0%, rgba(0, 109, 176, 0.48) 100%);
+  border-color: #00F5FE;
+  box-shadow: 0 6px 18px rgba(0, 109, 176, 0.28);
+}
+
+.choice-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+  color: transparent;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.dark-choice-btn.selected .choice-box {
+  background: #00F5FE;
+  border-color: #00F5FE;
+  color: #042567;
+}
+
+.choice-info strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.choice-info small {
+  display: block;
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1px;
+}
+
+.dark-write-row {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+
+.dark-write-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dark-write-col.small-col {
+  width: 115px;
+  flex-shrink: 0;
+}
+
+.dark-write-col.flex-col {
+  flex: 1;
+}
+
+.dark-write-col label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.dark-write-col input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  color: #FFFFFF;
+  font-family: var(--font-inter);
+  font-size: 12px;
+  padding: 2px 0 3px;
+  outline: none;
+}
+
+.dark-center-next {
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* Grid simplificado de botões clicáveis em "O que entra na conta?" */
+.entra-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px;
+  align-content: center;
+  scrollbar-width: none;
+}
+
+.entra-buttons-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.entra-btn-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 9px 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.18s ease;
+}
+
+.entra-btn-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(0, 245, 254, 0.65);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.entra-btn-card.selected {
+  background: rgba(4, 37, 103, 0.78);
+  border-color: #00F5FE;
+  color: #FFFFFF;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(0, 245, 254, 0.22);
+}
+
+.entra-btn-card .entra-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: transparent;
+  flex-shrink: 0;
+}
+
+.entra-btn-card.selected .entra-check {
+  background: #00F5FE;
+  border-color: #00F5FE;
+  color: #042567;
+}
+
+/* =====================================================
+   MODAL EXCEL OFICIAL DE 2 ABAS (RESUMO + ORÇAMENTO 47 ITENS)
+   Seguindo as cores #24214D, #ECEBF5 e #FFF1DF da planilha modelo
+   ===================================================== */
+.excel-topbar {
+  background: #24214D;
+}
+
+.excel-badge-icon {
+  color: #24214D;
+}
+
+.excel-sheet-tabs-bar {
+  background: #E8E7F2;
+  border-bottom: 1px solid #CFCDE2;
+  padding: 6px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.excel-sheet-tab {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid #CFCDE2;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 7px 14px;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  color: #4A4770;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.excel-sheet-tab.active {
+  background: #FFFFFF;
+  color: #24214D;
+  font-weight: 800;
+  box-shadow: 0 -2px 8px rgba(36, 33, 77, 0.08);
+}
+
+.excel-formula-hint {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: #4B5563;
+  padding-bottom: 5px;
+}
+
+.excel-tab-pane {
+  display: none;
+  flex: 1;
+  overflow: auto;
+  background: #FFFFFF;
+}
+
+.excel-tab-pane.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.excel-resumo-wrap {
+  padding: 16px;
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.excel-doc-header h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #24214D;
+}
+
+.excel-doc-header p {
+  font-size: 11px;
+  font-style: italic;
+  color: #555555;
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
+.excel-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 6px 16px;
+  background: #F8F8FC;
+  border: 1px solid #E5E4F0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.excel-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  border-bottom: 1px dashed #E5E7EB;
+  padding-bottom: 3px;
+}
+
+.excel-meta-row strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+.excel-meta-row span {
+  color: #374151;
+  text-align: right;
+}
+
+.excel-table th {
+  background: #24214D;
+  color: #FFFFFF;
+  border: 1px solid #39356E;
+  font-weight: 700;
+  padding: 8px 10px;
+}
+
+.excel-table th.num-col,
+.excel-table td.num-col {
+  text-align: right;
+}
+
+.excel-table tr.subtotal-direct-row td {
+  background: #ECEBF5;
+  color: #111827;
+  font-weight: 800;
+  border-top: 2px solid #24214D;
+}
+
+.resumo-rates-table {
+  margin-top: 16px;
+}
+
+/* Células editáveis em laranja-claro idênticas ao modelo (#FFF1DF) */
+.cell-orange-edit {
+  background: #FFF1DF !important;
+}
+
+.excel-edit-input,
+.excel-include-select {
+  width: 100%;
+  background: #FFF1DF;
+  border: 1px solid #E2B97F;
+  border-radius: 4px;
+  padding: 3px 5px;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  color: #1F2937;
+  text-align: right;
+}
+
+.excel-include-select {
+  text-align: center;
+  width: 46px;
+  cursor: pointer;
+}
+
+.excel-table tr.row-excluded td {
+  color: #999999 !important;
+}
+
+.excel-grand-total-box {
+  margin-top: 16px;
+  background: #24214D;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grand-total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.grand-pax-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 6px;
+}
+
+/* Ajustes Widescreen Desktop para as novas telas */
+@media (min-width: 769px) {
+  .dark-quiz-container {
+    max-width: 960px;
+    padding: 56px 136px 40px;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .dark-big-title {
+    font-size: 38px;
+  }
+
+  .dark-sub-text {
+    font-size: 15px;
+  }
+
+  .qtd-simplified-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    flex: initial;
+  }
+
+  .dark-glass-panel.full-span {
+    grid-column: 1 / -1;
+  }
+
+  .dark-glass-panel {
+    padding: 18px 22px;
+  }
+
+  .multi-click-grid.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    flex: initial;
+  }
+
+  .dark-choice-btn.full-col {
+    grid-column: 1 / -1;
+  }
+
+  .dark-choice-btn {
+    padding: 13px 16px;
+  }
+
+  .choice-info strong {
+    font-size: 14px;
+  }
+
+  .choice-info small {
+    font-size: 11.5px;
+  }
+
+  .entra-buttons-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    flex: initial;
+  }
+
+  .entra-btn-card {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .quiz-options-stage.with-input {
+    max-height: 360px;
+  }
+
+  .loc-mode-pills {
+    justify-content: flex-start;
+  }
+
+  .loc-quick-cities {
+    justify-content: flex-start;
+  }
+
+  .excel-modal-sheet {
+    max-width: 1140px;
+    height: 86vh;
+  }
+}
+

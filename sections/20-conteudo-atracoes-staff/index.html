@@ -1,0 +1,1632 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" id="meta-theme-color" content="#DFDFDF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>RSTCOM — Simulador de Orçamento de Eventos &amp; Tecnologia</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+</head>
+<body>
+
+  <!-- Container Principal Full-Screen (Mobile no Celular / Widescreen no PC) -->
+  <main class="phone-shell">
+
+    <!-- Toast de feedback -->
+    <div id="app-toast" class="app-toast"></div>
+
+    <!-- ===================================================================
+         SEÇÃO 1: INICIAR (#9190:29)
+         =================================================================== -->
+    <section id="screen-iniciar" class="screen active" aria-label="Seção iniciar">
+      <img src="../../assets/images/bg_iniciar.png" alt="Background RSTCOM Mobile" class="bg-hero bg-hero-mobile" />
+      <img src="../../assets/images/bg_iniciar_desktop.png" alt="Background RSTCOM Desktop" class="bg-hero bg-hero-desktop" />
+      <div class="iniciar-readability-overlay"></div>
+
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="iniciar-hero-content">
+        <h1 class="hero-title">
+          <span class="strong-black">Quanto custa</span>
+          seu próximo<br />evento?
+        </h1>
+
+        <p class="hero-subtitle">
+          Tenha uma faixa de investimento e planilha aberta para levar à diretoria antes do briefing fechado.
+        </p>
+
+        <button type="button" id="btn-agora-mesmo" class="btn-agora-mesmo animate-float">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="orb-avatar" />
+          <span class="btn-text">Agora mesmo</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 2: MENU (#9190:52)
+         =================================================================== -->
+    <section id="screen-menu" class="screen" aria-label="Menu de navegação">
+      <div class="menu-container">
+        <img src="../../assets/icons/logo_black.svg" alt="Logo" class="menu-logo-center" data-action="go-back" />
+        <div class="menu-line-top"></div>
+
+        <div class="menu-items-group">
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-iniciar">
+            <img src="../../assets/icons/icon_para_voce.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text medium">Para você</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+
+          <button type="button" class="menu-item-row" data-menu-target="screen-escopo-inicial">
+            <span class="menu-text light">Iniciar questionário completo</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+
+          <button type="button" class="menu-item-row" id="menu-fast-tech-btn">
+            <span class="menu-text medium">Contratar apenas Tecnologia (Via Rápida)</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+
+          <button type="button" class="menu-item-row" data-menu-target="screen-resultado">
+            <span class="menu-text medium">Minha estimativa e planilha</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+        </div>
+
+        <div class="menu-line-mid"></div>
+
+        <div class="menu-items-group">
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-auth">
+            <img src="../../assets/icons/icon_minha_conta.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text light">Minha conta</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+
+          <button type="button" class="menu-item-row has-icon" data-menu-target="screen-pagamento">
+            <img src="../../assets/icons/icon_contato.svg" alt="" class="menu-icon-left" />
+            <span class="menu-text light">Baixar Excel / Contato</span>
+            <img src="../../assets/icons/icon_flecha_menu.svg" alt="" class="menu-arrow" />
+          </button>
+        </div>
+
+        <div class="menu-bottom-area">
+          <div class="menu-line-bottom"></div>
+          <div class="brasil-footer">
+            <img src="../../assets/images/bandeira_brasil.png" alt="Brasil" />
+            <span>Brasil</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SEÇÃO 3: LOGIN (#9205:10) & SIGN UP (#9202:203)
+         =================================================================== -->
+    <section id="screen-auth" class="screen" aria-label="Login e Cadastro">
+      <div class="auth-stage">
+        <img src="../../assets/icons/logo_large_black.svg" alt="Logo RSTCOM" class="auth-top-logo" data-action="go-home" />
+
+        <div class="auth-wave-card">
+          <div class="auth-tabs-pill">
+            <div class="auth-tab-indicator"></div>
+            <button type="button" id="tab-login-btn" class="auth-tab-btn active">Login</button>
+            <button type="button" id="tab-signup-btn" class="auth-tab-btn">Sign up</button>
+          </div>
+
+          <div id="auth-form-container" class="auth-form-container"></div>
+        </div>
+
+        <div id="remember-me-row" class="remember-me-row">
+          <span>Remember me</span>
+          <button type="button" id="toggle-remember-btn" class="figma-toggle-btn active" aria-label="Remember me">
+            <span class="knob"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 1 (NOVA #1): IDENTIFICAÇÃO DE ESCOPO / VIA RÁPIDA DE TECNOLOGIA
+         Evita desistência se o cliente quiser contratar apenas uma tecnologia
+         =================================================================== -->
+    <section id="screen-escopo-inicial" class="screen screen-light-quiz" aria-label="O que você deseja contratar?">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Como podemos<br />ajudar hoje?</h2>
+            <p class="quiz-sub-question">Clique na modalidade desejada para adaptarmos as perguntas:</p>
+          </div>
+          <span class="click-hint-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.37-.08-.76.04-1.03.31-.43.44-.43 1.14 0 1.58l4.01 4.01c.38.37.89.58 1.42.58h6.5c1 0 1.84-.73 1.98-1.72l.63-4.47c.12-.85-.32-1.69-1.24-1.94z"/></svg>
+            Clique para selecionar
+          </span>
+        </div>
+
+        <div class="quiz-options-stage">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="quiz-options-grid cols-2">
+            <button type="button" class="option-glass-card selected" data-scope="completo">
+              <span class="opt-check-dot"></span>
+              <svg class="solid-opt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-6-3 6-3 6 3-6 3zm0 2.5l-10-5v2l10 5 10-5v-2l-10 5zm0 4l-10-5v2l10 5 10-5v-2l-10 5z"/></svg>
+              <div class="opt-title">Evento Completo 360°</div>
+              <div class="opt-desc">Convenção, congresso, lançamento, festa ou feira de ponta a ponta</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-scope="tecnologia">
+              <span class="opt-check-dot"></span>
+              <svg class="solid-opt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+              <div class="opt-title">Apenas Tecnologia (Rápido)</div>
+              <div class="opt-desc">Locar LED, som, luz, projeção, streaming ou credenciamento (6 perguntas)</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-scope="online">
+              <span class="opt-check-dot"></span>
+              <svg class="solid-opt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+              <div class="opt-title">Evento Online / Live</div>
+              <div class="opt-desc">Transmissão ao vivo, estúdio, webinar ou evento híbrido corporativo</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-scope="cenografia">
+              <span class="opt-check-dot"></span>
+              <svg class="solid-opt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 18v3h3v-3h10v3h3v-6H4v3zm15-8h3v3h-3v-3zM2 10h3v3H2v-3zm15 3H7V5c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v8z"/></svg>
+              <div class="opt-title">Cenografia &amp; Estrutura</div>
+              <div class="opt-desc">Construção de palco, estande para feira, ativação ou montagem técnica</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>13</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div class="pts-value" data-pts-counter>100 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 2 (ORIGINAL #1): FORMATO DO EVENTO (#9199:136)
+         =================================================================== -->
+    <section id="screen-pergunta-1" class="screen screen-light-quiz" aria-label="Qual o formato do evento?">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Tudo bem,<br />bem vindo!</h2>
+            <p class="quiz-sub-question">Qual o formato principal do evento? (Clique em uma opção)</p>
+          </div>
+          <button type="button" class="fast-track-shortcut-btn" id="btn-shortcut-tech">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            Só quero alugar tecnologia (Pular etapas)
+          </button>
+        </div>
+
+        <div class="quiz-options-stage">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="quiz-options-grid cols-3">
+            <button type="button" class="option-glass-card selected" data-format="Convencao de vendas">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Convenção<br />de vendas</div>
+              <div class="opt-desc">Kickoff, alinhamento e reconhecimento do time</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-format="Lancamento de produto">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Lançamento<br />de produto</div>
+              <div class="opt-desc">Imprensa, canais, clientes e parceiros</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-format="Evento Institucional">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Evento<br />Institucional</div>
+              <div class="opt-desc">Premiação, aniversário, encontro de liderança</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-format="Ativacao de marca">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Ativação de<br />marca</div>
+              <div class="opt-desc">Experiência em shopping, rua, festival ou feira</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-format="Congresso">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Congresso /<br />Seminário</div>
+              <div class="opt-desc">Programação científica ou técnica, salas e palestras</div>
+            </button>
+
+            <button type="button" class="option-glass-card" data-format="Festa Corporativa">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Festa &amp;<br />Celebração</div>
+              <div class="opt-desc">Festa de fim de ano, show, coquetel e confraternização</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" id="btn-next-p1" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>12</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div id="pts-p1" class="pts-value" data-pts-counter>150 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 3 (NOVA #2): OBJETIVO PRINCIPAL E TEMA DO PROJETO
+         =================================================================== -->
+    <section id="screen-objetivo" class="screen screen-light-quiz" aria-label="Objetivo do evento">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Objetivo do<br />projeto</h2>
+            <p class="quiz-sub-question">Clique no foco principal e, se quiser, escreva o tema do evento:</p>
+          </div>
+          <span class="click-hint-badge">Clique para selecionar + campo livre</span>
+        </div>
+
+        <div class="quiz-options-stage with-input">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="stage-inner-stack">
+            <div class="quiz-options-grid cols-3 compact-cards" id="grid-objetivo">
+              <button type="button" class="option-glass-card selected" data-objective="Engajar e alinhar metas do time">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Engajar e alinhar time</div>
+                <div class="opt-desc">Metas, cultura, treinamento e motivação</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-objective="Gerar negócios e relacionamento VIP">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Gerar negócios &amp; VIPs</div>
+                <div class="opt-desc">Networking executivo, clientes e vendas</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-objective="Posicionar marca e lançar novidades">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Posicionar marca</div>
+                <div class="opt-desc">Visibilidade, PR, imprensa e impacto</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-objective="Educação, conteúdo e palestras">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Conteúdo &amp; Educação</div>
+                <div class="opt-desc">Debates, painéis técnicos e conhecimento</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-objective="Celebrar conquistas e premiar">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Celebrar &amp; Premiar</div>
+                <div class="opt-desc">Reconhecimento, festa e confraternização</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-objective="Execução técnica audiovisual impecável">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Entrega Técnica AV</div>
+                <div class="opt-desc">Segurança operacional em som, LED e vídeo</div>
+              </button>
+            </div>
+
+            <div class="glass-write-box">
+              <label for="input-event-theme">Escreva o nome/tema do evento ou detalhe do objetivo (opcional):</label>
+              <input type="text" id="input-event-theme" placeholder="Ex: Convenção Anual 2027 — Tema Futuro em Movimento" />
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>11</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div class="pts-value" data-pts-counter>200 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 4 (ORIGINAL #2 SIMPLIFICADA): LOCALIZAÇÃO (#9215:244)
+         Botões de clique + Campo para escrever o local/cidade
+         =================================================================== -->
+    <section id="screen-localizacao" class="screen" aria-label="Onde será o evento?">
+      <img src="../../assets/images/bg_localizacao_mapa.png" alt="Localização" class="loc-bg-photo" />
+
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="loc-glass-curve"></div>
+
+      <div class="loc-content-box">
+        <h2 class="loc-title">Onde será o evento?</h2>
+        <p class="loc-subtitle">Clique na modalidade ou escreva a cidade / endereço abaixo:</p>
+
+        <div class="loc-mode-pills">
+          <button type="button" class="loc-mode-btn active" data-loc-mode="Presencial">Presencial</button>
+          <button type="button" class="loc-mode-btn" data-loc-mode="Híbrido">Híbrido</button>
+          <button type="button" class="loc-mode-btn" data-loc-mode="Remoto">100% Online</button>
+        </div>
+
+        <div class="loc-input-wrap">
+          <input
+            type="text"
+            id="loc-input"
+            class="loc-input"
+            placeholder="Escreva a cidade, hotel, espaço ou 'Ainda não definido'"
+            autocomplete="off"
+          />
+          <span id="loc-confirmed-check" class="loc-confirmed-check" title="Endereço confirmado">✓</span>
+
+          <div id="loc-autocomplete-list" class="loc-autocomplete-list"></div>
+        </div>
+
+        <div class="loc-quick-cities">
+          <button type="button" class="loc-quick-chip" data-city="São Paulo - SP">São Paulo - SP</button>
+          <button type="button" class="loc-quick-chip" data-city="Rio de Janeiro - RJ">Rio de Janeiro - RJ</button>
+          <button type="button" class="loc-quick-chip" data-city="Campinas / Interior - SP">Interior - SP</button>
+          <button type="button" class="loc-quick-chip" data-city="Ainda não definido">Ainda não definido</button>
+        </div>
+
+        <button type="button" id="loc-next-btn" class="btn-white-pill-next loc-emerging-next visible" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Seguir" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 5 (NOVA #3): SITUAÇÃO DO ESPAÇO E INFRAESTRUTURA
+         =================================================================== -->
+    <section id="screen-espaco" class="screen screen-light-quiz" aria-label="Situação do espaço">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Sobre o<br />espaço</h2>
+            <p class="quiz-sub-question">Como está a contratação do local de realização?</p>
+          </div>
+          <span class="click-hint-badge">Clique na opção + escreva detalhes</span>
+        </div>
+
+        <div class="quiz-options-stage with-input">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="stage-inner-stack">
+            <div class="quiz-options-grid cols-2 compact-cards" id="grid-espaco">
+              <button type="button" class="option-glass-card selected" data-space="Espaço já contratado / definido">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Espaço já definido</div>
+                <div class="opt-desc">Hotel, centro de convenções ou casa de eventos já escolhida</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-space="Preciso de sugestão e cotação de espaços">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Sugerir e cotar locais</div>
+                <div class="opt-desc">Quero que a agência busque e orce opções de espaço</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-space="Na sede / auditório da própria empresa">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Na sede da empresa</div>
+                <div class="opt-desc">Auditório, galpão ou área interna própria do cliente</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-space="Área externa / Galpão / Estúdio Digital">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Área aberta ou Estúdio</div>
+                <div class="opt-desc">Requer tenda/gerador ou gravação em estúdio</div>
+              </button>
+            </div>
+
+            <div class="glass-write-box">
+              <label for="input-space-details">Escreva o nome do hotel/espaço ou medidas/pé-direito (se souber):</label>
+              <input type="text" id="input-space-details" placeholder="Ex: WTC Events Center — Pé-direito 6m / Salão Principal" />
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>09</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div class="pts-value" data-pts-counter>250 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 6 (ORIGINAL #3 SIMPLIFICADA): QUANTIDADE DE PESSOAS, DIAS E PRAZO
+         Sem roldana! Campos diretos para escrever + botões simples de clique
+         =================================================================== -->
+    <section id="screen-qtd-pessoas" class="screen" aria-label="Quantas pessoas vão participar e quantos dias?">
+      <!-- Arco decorativo sutil ao fundo mantendo a identidade visual -->
+      <svg class="orbital-arc passive-bg-arc" width="538" height="530" viewBox="0 0 538 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="265" cy="265" r="264.5" stroke="white" stroke-opacity="0.22" />
+      </svg>
+
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Quantas</strong> pessoas e <u>quantos dias</u>?</h2>
+          <p class="dark-sub-text">Escreva o número exato ou clique nos botões rápidos abaixo:</p>
+        </div>
+
+        <div class="qtd-simplified-grid">
+          <!-- Bloco 1: Quantidade de Pessoas -->
+          <div class="dark-glass-panel">
+            <label class="panel-label" for="pax-direct-input">1. QUANTIDADE DE PARTICIPANTES (PAX)</label>
+            <div class="direct-number-row">
+              <input type="number" id="pax-direct-input" class="direct-number-input" value="300" min="10" max="50000" step="10" />
+              <span class="unit-tag">pessoas</span>
+            </div>
+            <div class="quick-click-chips" id="pax-quick-btns">
+              <button type="button" class="click-chip" data-pax="100">100</button>
+              <button type="button" class="click-chip active" data-pax="300">300</button>
+              <button type="button" class="click-chip" data-pax="500">500</button>
+              <button type="button" class="click-chip" data-pax="1000">1.000</button>
+              <button type="button" class="click-chip" data-pax="2500">2.500</button>
+            </div>
+          </div>
+
+          <!-- Bloco 2: Duração em Dias -->
+          <div class="dark-glass-panel">
+            <label class="panel-label" for="days-direct-input">2. DURAÇÃO DO EVENTO / LOCAÇÃO</label>
+            <div class="direct-number-row">
+              <input type="number" id="days-direct-input" class="direct-number-input" value="5" min="1" max="30" />
+              <span class="unit-tag">dias</span>
+            </div>
+            <div class="quick-click-chips" id="days-quick-btns">
+              <button type="button" class="click-chip" data-days="1">1 dia</button>
+              <button type="button" class="click-chip" data-days="2">2 dias</button>
+              <button type="button" class="click-chip" data-days="3">3 dias</button>
+              <button type="button" class="click-chip active" data-days="5">5 dias</button>
+              <button type="button" class="click-chip" data-days="7">7 dias</button>
+            </div>
+          </div>
+
+          <!-- Bloco 3: Prazo até o Evento -->
+          <div class="dark-glass-panel full-span">
+            <label class="panel-label">3. PRAZO ATÉ O EVENTO (CLIQUE EM UMA OPÇÃO)</label>
+            <p class="panel-helper">Prazos curtos reduzem opções de fornecedores e ajustam o cálculo.</p>
+            <div class="quick-click-chips cols-4" id="leadtime-quick-btns">
+              <button type="button" class="click-chip" data-lead="Menos de 30 dias">Menos de 30 dias</button>
+              <button type="button" class="click-chip active" data-lead="De 1 a 3 meses">De 1 a 3 meses</button>
+              <button type="button" class="click-chip" data-lead="De 3 a 6 meses">De 3 a 6 meses</button>
+              <button type="button" class="click-chip" data-lead="Mais de 6 meses">Mais de 6 meses</button>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" id="btn-next-qtd" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 7 (NOVA #4): DINÂMICA DE AMBIENTES E SALAS SIMULTÂNEAS
+         =================================================================== -->
+    <section id="screen-ambientes" class="screen screen-light-quiz" aria-label="Ambientes e salas simultâneas">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Ambientes e<br />salas</h2>
+            <p class="quiz-sub-question">Como o público será distribuído durante a programação?</p>
+          </div>
+          <span class="click-hint-badge">Clique na opção + escreva qtd de salas</span>
+        </div>
+
+        <div class="quiz-options-stage with-input">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="stage-inner-stack">
+            <div class="quiz-options-grid cols-2 compact-cards" id="grid-ambientes">
+              <button type="button" class="option-glass-card" data-room-layout="Plenária única principal" data-default-rooms="0">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Plenária Única</div>
+                <div class="opt-desc">Todos os participantes juntos em um único salão/auditório</div>
+              </button>
+
+              <button type="button" class="option-glass-card selected" data-room-layout="Plenária + Salas simultâneas (Breakouts)" data-default-rooms="2">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Plenária + Breakouts</div>
+                <div class="opt-desc">Palco principal + salas de apoio ou oficinas paralelas</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-room-layout="Plenária + Feira / Exposição de Estandes" data-default-rooms="3">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Plenária + Feira</div>
+                <div class="opt-desc">Auditório de conteúdo integrado a pavilhão de estandes</div>
+              </button>
+
+              <button type="button" class="option-glass-card" data-room-layout="Formato Pista / Lounge / Coquetel" data-default-rooms="1">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Pista &amp; Lounges</div>
+                <div class="opt-desc">Ambiente integrado para festa, show e networking</div>
+              </button>
+            </div>
+
+            <div class="glass-write-box">
+              <label for="input-breakout-rooms">Quantidade de salas extras / breakouts ou camarins (escreva o número):</label>
+              <input type="number" id="input-breakout-rooms" value="2" min="0" max="50" placeholder="Ex: 2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>07</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div class="pts-value" data-pts-counter>350 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 8 (NOVA #5): TECNOLOGIAS DE PALCO, LED, SOM E LUZ
+         Múltipla escolha clicável com hover + campo para escrever medidas/detalhes
+         =================================================================== -->
+    <section id="screen-tecnologia" class="screen screen-dark-quiz" aria-label="Tecnologias de palco, LED, som e luz">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Tecnologia</strong>, LED, Som e Luz</h2>
+          <p class="dark-sub-text">Passe o mouse e clique nos itens que deseja incluir (pode selecionar vários):</p>
+        </div>
+
+        <div class="multi-click-grid cols-2" id="grid-tech-choices">
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Painel de LED">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Painel de LED Alta Definição</strong>
+              <small>Plenária, testeiras, fundo de palco ou túnel</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Sonorização">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Sonorização &amp; Microfonia Digital</strong>
+              <small>Sistema Line Array, caixas, headsets e mesa digital</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Iluminação cênica">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Iluminação Cênica &amp; Show</strong>
+              <small>Moving lights, fresnéis, ribaltas e mesa de luz</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Projeção e Switcher">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Projeção, Switcher &amp; Retorno</strong>
+              <small>Processadoras de vídeo, teleprompter, notebooks e clique</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Gerador">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Gerador Silenciado &amp; Energia</strong>
+              <small>Gerador cabinado, quadros elétricos e cabeamento</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-tech-item="Técnicos de operação">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Equipe Técnica de Operação</strong>
+              <small>Operadores de áudio, luz, LED, VJs e roadies</small>
+            </div>
+          </button>
+        </div>
+
+        <div class="dark-write-row">
+          <div class="dark-write-col small-col">
+            <label for="input-led-m2">Área estimada de LED (m²):</label>
+            <input type="number" id="input-led-m2" value="18" min="0" max="1000" />
+          </div>
+          <div class="dark-write-col flex-col">
+            <label for="input-tech-details">Especificação técnica ou medidas desejadas (opcional):</label>
+            <input type="text" id="input-tech-details" placeholder="Ex: 1 LED central 6x3m P2.6 + 2 telas laterais 3x2m" />
+          </div>
+        </div>
+
+        <button type="button" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 9 (NOVA #6): TRANSMISSÃO AO VIVO, APP E CREDENCIAMENTO
+         =================================================================== -->
+    <section id="screen-transmissao-cred" class="screen screen-dark-quiz" aria-label="Transmissão, aplicativo e credenciamento">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Transmissão</strong>, App e Credenciamento</h2>
+          <p class="dark-sub-text">Clique nos recursos digitais e interativos que farão parte do escopo:</p>
+        </div>
+
+        <div class="multi-click-grid cols-2" id="grid-stream-choices">
+          <button type="button" class="dark-choice-btn selected" data-stream-item="Credenciamento e Totens">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Credenciamento &amp; Totens</strong>
+              <small>Impressão de crachás, QR Code, reconhecimento facial</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-stream-item="Aplicativo do Evento">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Aplicativo Oficial do Evento</strong>
+              <small>Agenda interativa, push notifications, rede social interna</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-stream-item="Interação ao Vivo">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Interação, Quiz &amp; Votação ao Vivo</strong>
+              <small>Perguntas ao palestrante em tempo real e gamificação</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn" data-stream-item="Streaming Online">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Transmissão ao Vivo (Streaming)</strong>
+              <small>Corte multicâmera broadcast + plataforma online</small>
+            </div>
+          </button>
+        </div>
+
+        <button type="button" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 10 (NOVA #7): CENOGRAFIA, PALCO E COMUNICAÇÃO VISUAL
+         =================================================================== -->
+    <section id="screen-cenografia" class="screen screen-light-quiz" aria-label="Cenografia e estrutura">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Cenografia e<br />estrutura</h2>
+            <p class="quiz-sub-question">Clique nos itens cenográficos necessários (pode marcar mais de um):</p>
+          </div>
+          <span class="click-hint-badge">Múltipla escolha • Clique para marcar</span>
+        </div>
+
+        <div class="quiz-options-stage with-input">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="stage-inner-stack">
+            <div class="quiz-options-grid cols-2 compact-cards" id="grid-cenografia">
+              <button type="button" class="option-glass-card selected" data-ceno="Palco e Projeto 3D">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Palco &amp; Projeto 3D</div>
+                <div class="opt-desc">Projeto cenográfico 3D, palco revestido, testeiras e púlpito</div>
+              </button>
+
+              <button type="button" class="option-glass-card selected" data-ceno="Entrada e Instagramáveis">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Entrada &amp; Ativações</div>
+                <div class="opt-desc">Pórtico/túnel de entrada, photo opportunity e áreas de marca</div>
+              </button>
+
+              <button type="button" class="option-glass-card selected" data-ceno="Mobiliário e Lounges">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Mobiliário &amp; Lounges</div>
+                <div class="opt-desc">Poltronas, sofás, bistrôs, camarins e áreas de convivência</div>
+              </button>
+
+              <button type="button" class="option-glass-card selected" data-ceno="Comunicação Visual">
+                <span class="opt-check-dot"></span>
+                <div class="opt-title">Sinalização Visual</div>
+                <div class="opt-desc">Totens direcionais, lonas, adesivação e backdrops</div>
+              </button>
+            </div>
+
+            <div class="glass-write-box">
+              <label for="input-ceno-details">Observações de cenografia, estande ou acabamento (opcional):</label>
+              <input type="text" id="input-ceno-details" placeholder="Ex: Palco 12x4m com rampa de acessibilidade + 2 estandes de 24m²" />
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>05</div>
+              <div class="rem-label">Perguntas restantes</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div class="pts-value" data-pts-counter>450 <small>pts</small></div>
+              <div class="pts-label">Conquistados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 11 (NOVA #8): ALIMENTAÇÃO E BEBIDAS (GASTRONOMIA)
+         =================================================================== -->
+    <section id="screen-gastronomia" class="screen screen-dark-quiz" aria-label="Alimentação e bebidas">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Alimentação</strong> e Bebidas (A&amp;B)</h2>
+          <p class="dark-sub-text">Clique nos serviços de gastronomia que devem entrar no orçamento:</p>
+        </div>
+
+        <div class="multi-click-grid cols-2" id="grid-ab-choices">
+          <button type="button" class="dark-choice-btn selected" data-ab-item="Coffee breaks">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Coffee Breaks (2 por dia)</strong>
+              <small>Welcome coffee e intervalos com salgados, doces e bebidas</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-ab-item="Almoço">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Almoço para os Participantes</strong>
+              <small>Buffet executivo ou empratado durante os dias de evento</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-ab-item="Jantar ou Coquetel">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Coquetel ou Jantar de Encerramento</strong>
+              <small>Confraternização especial, finger food ou jantar de gala</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-ab-item="Open bar">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Bebidas &amp; Open Bar</strong>
+              <small>Pacote de bebidas, bar de drinks e serviço para festa</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn full-col" data-ab-item="Sem A&B">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Não incluir Alimentação e Bebidas neste orçamento</strong>
+              <small>O local já fornece ou será contratado à parte</small>
+            </div>
+          </button>
+        </div>
+
+        <button type="button" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 12 (NOVA #9): HOSPEDAGEM, AÉREO E TRASLADOS
+         =================================================================== -->
+    <section id="screen-logistica" class="screen screen-dark-quiz" aria-label="Hospedagem e logística">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Hospedagem</strong>, Aéreo e Logística</h2>
+          <p class="dark-sub-text">Clique nos itens logísticos necessários e informe quantas pessoas viajam:</p>
+        </div>
+
+        <div class="multi-click-grid cols-2" id="grid-log-choices">
+          <button type="button" class="dark-choice-btn selected" data-log-item="Hospedagem participantes">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Hospedagem dos Participantes</strong>
+              <small>Bloqueio de quartos single/duplo em hotel do evento</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-log-item="Hospedagem equipe">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Hospedagem da Equipe / Staff</strong>
+              <small>Quartos para equipe de produção e operação técnica</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-log-item="Passagens aéreas">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Passagens Aéreas (Ida e Volta)</strong>
+              <small>Emissão de bilhetes e gestão de malha aérea nacional</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-log-item="Traslados">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Traslados (Aeroporto / Hotel / Evento)</strong>
+              <small>Ônibus executivos, vans, carros VIP e receptivo</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn full-col" data-log-item="Sem logística">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Não preciso de Hospedagem ou Passagens Aéreas</strong>
+              <small>Público local ou logística gerenciada internamente</small>
+            </div>
+          </button>
+        </div>
+
+        <div class="dark-write-row">
+          <div class="dark-write-col flex-col">
+            <label for="input-hotel-pax">Quantas pessoas precisarão de hotel / deslocamento? (Escreva o número):</label>
+            <input type="number" id="input-hotel-pax" value="210" min="0" max="50000" placeholder="Ex: 210" />
+          </div>
+        </div>
+
+        <button type="button" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 13 (NOVA #10): CONTEÚDO, ATRAÇÕES, BRINDES E STAFF
+         =================================================================== -->
+    <section id="screen-conteudo-atracoes" class="screen screen-dark-quiz" aria-label="Conteúdo, atrações, kits e staff">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title"><strong>Conteúdo</strong>, Atrações, Kits e Staff</h2>
+          <p class="dark-sub-text">Clique nas entregas criativas, artísticas e de operação que deseja incluir:</p>
+        </div>
+
+        <div class="multi-click-grid cols-2" id="grid-cont-choices">
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Identidade e Roteiro">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Identidade Visual (KV) &amp; Roteiro</strong>
+              <small>Conceito criativo, direção artística e apresentações</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Vídeos e Motion LED">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Vídeos de Abertura &amp; Motion p/ LED</strong>
+              <small>Vinhetas animadas, aberturas de impacto e transições</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Foto, Vídeo e Aftermovie">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Cobertura Foto, Vídeo &amp; Aftermovie</strong>
+              <small>Equipe audiovisual diária e edição de vídeo resumo</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Mestre de Cerimônias / Palestrante">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Mestre de Cerimônias &amp; Palestrante</strong>
+              <small>Apresentador profissional e keynote speaker</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Show ou Atração Musical">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Show ou Atração de Encerramento</strong>
+              <small>Banda, artista nacional, DJ ou performance especial</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected" data-cont-item="Brindes e Kits">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Kit do Participante &amp; Brindes</strong>
+              <small>Welcome kit personalizado, mochila, caderno, troféus</small>
+            </div>
+          </button>
+
+          <button type="button" class="dark-choice-btn selected full-col" data-cont-item="Staff, Recepção e Segurança">
+            <span class="choice-box">✓</span>
+            <div class="choice-info">
+              <strong>Recepcionistas, Seguranças, Brigada Médica &amp; Limpeza</strong>
+              <small>Equipe completa de atendimento, controle de acesso, ambulância e limpeza</small>
+            </div>
+          </button>
+        </div>
+
+        <button type="button" class="btn-white-pill-next dark-center-next" data-next-step="true">
+          <span class="pill-label">Seguir próxima pergunta</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Avançar" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 14 (ORIGINAL #4): PADRÃO DE ENTREGA (#9215:297)
+         =================================================================== -->
+    <section id="screen-padrao-entrega" class="screen screen-light-quiz" aria-label="Qual é o padrão de entrega?">
+      <img src="../../assets/icons/logo_black.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu.svg" alt="Menu" />
+      </button>
+
+      <div class="quiz-content-wrap">
+        <div class="quiz-header-group">
+          <div>
+            <h2 class="quiz-big-title">Padrão de<br />entrega</h2>
+            <p class="quiz-sub-question">Clique no nível de acabamento esperado para o projeto:</p>
+          </div>
+          <span class="click-hint-badge">Clique em uma opção</span>
+        </div>
+
+        <div class="quiz-options-stage">
+          <img src="../../assets/images/card_bg_evento.png" alt="" class="quiz-card-backdrop" />
+
+          <div class="quiz-options-grid cols-2">
+            <button type="button" class="option-glass-card large-opt" data-padrao="Essencial">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Essencial</div>
+              <div class="opt-desc">Funcional e bem executado, ótimo custo-benefício sem excessos</div>
+            </button>
+
+            <button type="button" class="option-glass-card large-opt selected" data-padrao="Corporativo">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Corporativo</div>
+              <div class="opt-desc">Boa produção, cenografia e conteúdo próprios no padrão executivo</div>
+            </button>
+
+            <button type="button" class="option-glass-card large-opt" data-padrao="Premium">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Premium</div>
+              <div class="opt-desc">Experiência de alto impacto visual, acabamentos e tecnologia superiores</div>
+            </button>
+
+            <button type="button" class="option-glass-card large-opt" data-padrao="Iconico">
+              <span class="opt-check-dot"></span>
+              <div class="opt-title">Icônico</div>
+              <div class="opt-desc">Projeto autoral inédito, grandes atrações, referência de mercado</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button type="button" id="btn-next-padrao" class="btn-next-bar" data-next-step="true">
+            <span class="next-bar-label">Seguir próxima pergunta</span>
+            <span class="next-bar-circle">
+              <img src="../../assets/icons/icon_arrow_next.svg" alt="Avançar" />
+            </span>
+          </button>
+
+          <div class="status-pills-row">
+            <div class="status-pill-left">
+              <div class="rem-number" data-rem-counter>01</div>
+              <div class="rem-label">Pergunta restante</div>
+            </div>
+
+            <div class="status-pill-right">
+              <img src="../../assets/images/card_pts_bg-26ffa4.png" alt="" class="pts-bg" />
+              <img src="../../assets/icons/icon_realcar.svg" alt="" class="pts-sparkle" />
+              <div id="pts-padrao" class="pts-value" data-pts-counter>650 <small>pts</small></div>
+              <div class="pts-label">Acumulados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         PERGUNTA 15 (ORIGINAL #5 SIMPLIFICADA): O QUE ENTRA NA CONTA? (#9216:347)
+         Grid de botões clicáveis com hover claro + Campo de Verba/Observações
+         =================================================================== -->
+    <section id="screen-o-que-entra" class="screen screen-dark-quiz" aria-label="O que entra na conta?">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="dark-quiz-container">
+        <div class="dark-quiz-header">
+          <h2 class="dark-big-title">O que entra na conta?</h2>
+          <p class="dark-sub-text">Marcamos os centros de custo conforme suas respostas. <strong>Passe o mouse e clique para marcar ou desmarcar:</strong></p>
+        </div>
+
+        <!-- Grid de botões clicáveis (sem roldana, com hover e indicação clara de clique) -->
+        <div id="entra-list-scroll" class="entra-buttons-grid"></div>
+
+        <div class="dark-write-row">
+          <div class="dark-write-col flex-col">
+            <label for="input-budget-target">Tem uma verba meta (budget teto) ou observação importante? (Escreva abaixo):</label>
+            <input type="text" id="input-budget-target" placeholder="Ex: Meta de R$ 2,5 milhões / Precisamos de proposta formal até sexta-feira" />
+          </div>
+        </div>
+
+        <button type="button" id="btn-ver-estimativa" class="btn-white-pill-next centered-label dark-center-next">
+          <span class="pill-label">Ver minha estimativa</span>
+          <span class="pill-circle">
+            <img src="../../assets/icons/icon_arrow_small_next.svg" alt="Ver" />
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         TELA FINAL 1 — RESULTADO DA ESTIMATIVA (#9216:509)
+         =================================================================== -->
+    <section id="screen-resultado" class="screen" aria-label="Resultado da Estimativa">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="resultado-scroll-container">
+        <div class="resultado-inner-wrap">
+          <!-- Card Principal com a Faixa de Investimento -->
+          <div class="res-hero-card">
+            <div class="res-hero-top-row">
+              <span id="res-user-tag" class="res-tag-orange">ARTHUR, SUA ESTIMATIVA</span>
+              <span id="res-format-tag" class="res-tag-format">CONVENÇÃO DE VENDAS</span>
+            </div>
+
+            <div class="res-label-custo">SEU EVENTO PODE CUSTAR DE</div>
+            <div id="res-price-min" class="res-price-big">R$ 2,55 mi</div>
+            <div class="res-price-sep">A</div>
+            <div id="res-price-max" class="res-price-big">R$ 5,19 mi</div>
+
+            <div id="res-per-pax" class="res-per-pax">
+              Valor médio orçado: R$ 3,83 mi • Por participante: R$ 8.486 a R$ 17.304
+            </div>
+
+            <div id="res-summary-pills" class="res-summary-pills"></div>
+          </div>
+
+          <div class="res-bottom-grid">
+            <!-- Card "Onde o dinheiro vai" -->
+            <div class="res-section-card">
+              <h3 class="res-card-title">Onde o dinheiro vai</h3>
+              <div id="res-bars-container"></div>
+              <p class="res-footnote">
+                Participação nos custos diretos, antes de honorários de agência, contingência e impostos sobre nota.
+              </p>
+            </div>
+
+            <!-- Card "[ PLANILHA COMPLETA ]" -->
+            <div class="res-paywall-card">
+              <div class="paywall-tag">[ PLANILHA COMPLETA .XLSX ]</div>
+              <h3 class="paywall-title">Veja item a item o que compõe esse valor</h3>
+
+              <div class="paywall-blurred-preview">
+                <div>Locação do espaço principal  5 × R$ 36.338</div>
+                <div>Diária de montagem e desmontagem  1 × R$ 17.382</div>
+                <div>Salas de apoio e breakouts  10 × R$ 3.880</div>
+                <div>ECAD e direitos de execução  1 × R$ 6.128</div>
+              </div>
+
+              <ul class="paywall-checklist">
+                <li><span class="check-icon">✓</span> <span><strong>2 Abas completas (Resumo + Orçamento com 47 itens)</strong> e valores mínimo, máximo e orçado</span></li>
+                <li><span class="check-icon">✓</span> <span><strong>Fórmulas abertas (SUMIF / IF)</strong> e células editáveis em laranja-claro (Incluir S/N, Qtd, % de Fee e Impostos)</span></li>
+                <li><span class="check-icon">✓</span> <span><strong>Briefing completo</strong> das suas respostas integrado para a diretoria</span></li>
+              </ul>
+
+              <div class="paywall-price">R$ 49,90</div>
+              <div class="paywall-price-sub">Pagamento único • Arquivo Excel .xlsx original</div>
+
+              <button type="button" id="btn-ir-pagamento" class="btn-simular-pagamento">
+                Simular pagamento e liberar Excel (.xlsx)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+    <!-- ===================================================================
+         TELA FINAL 2 — PAGAMENTO E POP-UP EXCEL COMPLETO (2 ABAS + .XLSX)
+         =================================================================== -->
+    <section id="screen-pagamento" class="screen" aria-label="Informações de pagamento e liberação da planilha">
+      <img src="../../assets/icons/logo_white.svg" alt="Logo" class="top-logo" data-action="go-home" />
+      <button type="button" class="top-menu-btn" data-action="open-menu" aria-label="Abrir menu">
+        <img src="../../assets/icons/icon_menu_white.svg" alt="Menu" />
+      </button>
+
+      <div class="pagamento-scroll">
+        <div class="pagamento-inner-wrap">
+          <div class="pay-header-card">
+            <span class="badge">LIBERAÇÃO IMEDIATA • PLANILHA EXCEL .XLSX OFICIAL</span>
+            <h2>Finalizar e abrir planilha</h2>
+            <p>Confirme seus dados abaixo para abrir a planilha completa (Abas Resumo + Orçamento 47 Itens) e baixar o arquivo .xlsx.</p>
+          </div>
+
+          <div class="pay-method-tabs">
+            <button type="button" class="pay-method-tab active" data-pay-method="cartao">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 5px;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+              Cartão de Crédito
+            </button>
+            <button type="button" class="pay-method-tab" data-pay-method="pix">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 5px;"><path d="M12 2L4.5 9.5 12 17l7.5-7.5L12 2zm0 4.24L15.26 9.5 12 12.76 8.74 9.5 12 6.24zM4.5 14.5L12 22l7.5-7.5-1.41-1.41L12 19.17l-6.09-6.08L4.5 14.5z"/></svg>
+              PIX (Instantâneo)
+            </button>
+          </div>
+
+          <div class="pay-form-card">
+            <button type="button" id="btn-autofill-demo" class="btn-autofill-demo">
+              Preencher dados de demonstração com 1 clique
+            </button>
+
+            <div class="pay-row-2col">
+              <div class="pay-input-group">
+                <label for="pay-name">Seu Nome</label>
+                <input type="text" id="pay-name" placeholder="Ex: Arthur Souza" value="Arthur Souza" />
+              </div>
+              <div class="pay-input-group">
+                <label for="pay-company">Empresa</label>
+                <input type="text" id="pay-company" placeholder="Ex: rstcom" value="rstcom" />
+              </div>
+            </div>
+
+            <div class="pay-input-group">
+              <label for="pay-email">E-mail corporativo para receber a planilha .xlsx</label>
+              <input type="email" id="pay-email" placeholder="seuemail@empresa.com.br" value="arthur@rstcom.com.br" />
+            </div>
+
+            <div id="pay-card-fields">
+              <div class="pay-input-group">
+                <label for="pay-card-number">Número do Cartão (Simulação)</label>
+                <input type="text" id="pay-card-number" placeholder="0000 0000 0000 0000" value="4532 •••• •••• 8890" />
+              </div>
+
+              <div class="pay-row-2col">
+                <div class="pay-input-group">
+                  <label for="pay-card-exp">Validade</label>
+                  <input type="text" id="pay-card-exp" placeholder="MM/AA" value="08/29" />
+                </div>
+                <div class="pay-input-group">
+                  <label for="pay-card-cvv">CVV</label>
+                  <input type="text" id="pay-card-cvv" placeholder="123" value="742" />
+                </div>
+              </div>
+            </div>
+
+            <div id="pay-pix-fields" style="display: none; text-align: center; padding: 10px 0 14px;">
+              <div style="background: #fff; color: #000; display: inline-block; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 11px; margin-bottom: 6px;">
+                [ QR CODE PIX SIMULADO • R$ 49,90 ]
+              </div>
+              <p style="font-size: 9.5px; color: rgba(255,255,255,0.75);">
+                Clique no botão abaixo para simular a confirmação imediata.
+              </p>
+            </div>
+
+            <button type="button" id="btn-confirmar-pagamento" class="btn-confirmar-pagamento">
+              Confirmar e abrir Planilha Excel (.xlsx) agora →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POP-UP MODAL DA PLANILHA EXCEL OFICIAL (2 ABAS: RESUMO + ORÇAMENTO DETALHADO) -->
+      <div id="excel-modal-backdrop" class="excel-modal-backdrop" role="dialog" aria-label="Planilha Excel de Custos">
+        <div class="excel-modal-sheet">
+          <div class="excel-topbar">
+            <div class="excel-file-title">
+              <div class="excel-badge-icon">X</div>
+              <div>
+                <h3 id="excel-modal-filename">Orcamento-Convencao-de-vendas.xlsx</h3>
+                <small>Edite as células em laranja-claro (Incluir S/N, Qtd, Unit. Orçado e Percentuais)</small>
+              </div>
+            </div>
+            <button type="button" id="excel-close-btn" class="excel-close-btn" aria-label="Fechar planilha">✕</button>
+          </div>
+
+          <!-- Abas da Planilha (Resumo e Orçamento) idênticas ao arquivo Excel de referência -->
+          <div class="excel-sheet-tabs-bar">
+            <button type="button" class="excel-sheet-tab active" data-excel-tab="resumo">
+              Aba 1: Resumo &amp; Briefing
+            </button>
+            <button type="button" class="excel-sheet-tab" data-excel-tab="orcamento">
+              Aba 2: Orçamento Detalhado (47 Itens)
+            </button>
+            <div class="excel-formula-hint">
+              <span class="excel-fx">fx</span>
+              <span id="excel-formula-display">=SUMIF('Orçamento'!$B$4:$B$50; Categoria; 'Orçamento'!$K$4:$K$50)</span>
+            </div>
+          </div>
+
+          <!-- CONTEÚDO ABA 1: RESUMO EXECUTIVO + BRIEFING + HONORÁRIOS/IMPOSTOS -->
+          <div id="excel-tab-resumo" class="excel-tab-pane active">
+            <div class="excel-resumo-wrap">
+              <div class="excel-doc-header">
+                <h4>Estimativa de investimento do evento</h4>
+                <p>Valores de referência para planejamento. Não constitui proposta comercial.</p>
+              </div>
+
+              <div id="excel-resumo-meta-grid" class="excel-meta-grid"></div>
+
+              <table class="excel-table resumo-table">
+                <thead>
+                  <tr>
+                    <th>Categoria</th>
+                    <th class="num-col">Mínimo</th>
+                    <th class="num-col">Máximo</th>
+                    <th class="num-col">Orçado</th>
+                  </tr>
+                </thead>
+                <tbody id="excel-resumo-cat-tbody"></tbody>
+              </table>
+
+              <table class="excel-table resumo-rates-table">
+                <thead>
+                  <tr>
+                    <th>Percentuais (editáveis em laranja-claro)</th>
+                    <th class="num-col">Mínimo (%)</th>
+                    <th class="num-col">Máximo (%)</th>
+                    <th class="num-col">Orçado (%)</th>
+                  </tr>
+                </thead>
+                <tbody id="excel-resumo-rates-tbody"></tbody>
+              </table>
+
+              <div id="excel-resumo-grand-total" class="excel-grand-total-box"></div>
+            </div>
+          </div>
+
+          <!-- CONTEÚDO ABA 2: ORÇAMENTO DETALHADO (47 ITENS COM COLUNA INCLUIR S/N) -->
+          <div id="excel-tab-orcamento" class="excel-tab-pane">
+            <div class="excel-table-wrap">
+              <table class="excel-table orcamento-full-table">
+                <thead>
+                  <tr>
+                    <th>Incluir</th>
+                    <th>Categoria</th>
+                    <th>Item</th>
+                    <th>Unidade</th>
+                    <th>Qtd</th>
+                    <th>Unit. mín.</th>
+                    <th>Unit. máx.</th>
+                    <th>Unit. orçado</th>
+                    <th>Total mín.</th>
+                    <th>Total máx.</th>
+                    <th>Total orçado</th>
+                    <th>Status</th>
+                    <th>Observações</th>
+                  </tr>
+                </thead>
+                <tbody id="excel-table-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="excel-footer-actions">
+            <div class="excel-totals-strip">
+              <span>INVESTIMENTO TOTAL ESTIMADO (C/ FEE + CONTINGÊNCIA + IMPOSTOS):</span>
+              <span>
+                Mín: <strong id="excel-total-min">R$ 2,55 mi</strong> |
+                Máx: <strong id="excel-total-max">R$ 5,19 mi</strong> |
+                Orçado: <strong id="excel-total-orcado" style="color: #24214D;">R$ 3,83 mi</strong>
+              </span>
+            </div>
+            <div class="excel-btns-row">
+              <button type="button" id="btn-download-csv" class="btn-download-csv">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 6px;"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Baixar Planilha Excel Oficial (.xlsx)
+              </button>
+              <button type="button" id="btn-send-email" class="btn-send-email">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 6px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Enviar Planilha por E-mail
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="nav-circle-back white-bg" data-action="go-back" aria-label="Voltar">
+        <img src="../../assets/icons/icon_arrow_back.svg" alt="Voltar" />
+      </button>
+      <button type="button" class="nav-circle-home" data-action="go-home" aria-label="Início">
+        <img src="../../assets/icons/icon_casa.svg" alt="Home" />
+      </button>
+    </section>
+
+  </main>
+
+  <script src="../../js/calculator.js"></script>
+  <script src="../../js/app.js"></script>
+</body>
+</html>
+
+<script>window.addEventListener('DOMContentLoaded', () => { if(window.navigateTo) window.navigateTo('screen-conteudo-atracoes', false); });</script>
